@@ -1,19 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@ page isELIgnored="false" %> 
+<%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="UTF-8">
-<title>No Order</title>
-<link rel="stylesheet" type="text/css"
-	  href="${pageContext.request.contextPath}/css/styles.css">
-</head>
-<body>
-   <jsp:include page="_header.jsp" />
-   <jsp:include page="_menu.jsp" />
-   <h2>404</h2>
-   <h3 style="color:red;">You did not order anything</h3>
-   <jsp:include page="_footer.jsp" />
-</body>
+	<t:template>
+		<body>
+		   <h2>404</h2>
+		   <h3 style="color:red;">Você não realizou nenhum pedido</h3>
+		</body>
+	</t:template>
 </html>

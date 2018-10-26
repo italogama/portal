@@ -3,7 +3,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -59,7 +58,7 @@
 
               <div class="separator">
                 <p class="change_link">Novo por aqui?
-                  <a href="#signup" class="to_register"> Registrar-se </a>
+                  <a href="${pageContext.request.contextPath}/signUp" class="to_register"> Registrar-se </a>
                 </p>
 
                 <div class="clearfix"></div>
@@ -71,56 +70,6 @@
                 </div>
               </div>
             </form>
-          </section>
-        </div>
-		
-		
-		<c:if test="${param.error == 'true'}">
-           <div style="color: red; margin: 10px 0px;">
- 
-               Login Failed!!!<br /> Reason :
-               ${sessionScope["SPRING_SECURITY_LAST_EXCEPTION"].message}
- 
-           </div>
-       </c:if>
-        <div id="register" class="animate form registration_form">
-          <section class="login_content">
-            <form:form action="${pageContext.request.contextPath}/signUp" method="POST" modelAttribute="account">
-              <h1>Registre sua conta</h1>
-              <div>
-                <a style="color:red;"><form:errors path="userName"></form:errors></a>
-                <input type="text" class="form-control" path="userName" placeholder="Usuario" required="true" />
-              </div>
-              <div>
-                <a style="color:red;"><form:errors path="password"></form:errors></a>
-                <input type="password" class="form-control" path="password" placeholder="Senha" required="true" />
-              </div>
-              <div>
-                <input type="password" class="form-control" path="confirmPassword" placeholder="Repita a senha" required="true" />
-                <a style="color:red;"><form:errors path="confirmPassword"></form:errors></a>
-              </div>
-              <div>
-              	<a>&nbsp;</a>
-               <!-- <a class="btn btn-default submit" type="submit" value="Sign Up">Enviar</a> -->
-                <td><input type="submit" value="Sign Up" />
-              </div>
-
-              <div class="clearfix"></div>
-
-              <div class="separator">
-                <p class="change_link">Ja possui registro?
-                  <a href="#signin" class="to_register"> Logar-se </a>
-                </p>
-
-                <div class="clearfix"></div>
-                <br />
-
-                <div>
-                  <h1><i class="fa fa-plane"></i> Agência de Viagens</h1>
-                  <p>©2018 All Rights Reserved.</p>
-                </div>
-              </div>
-            </form:form>
           </section>
         </div>
       </div>

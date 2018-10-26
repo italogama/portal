@@ -1,96 +1,75 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ page isELIgnored="false" %> 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
- 
+
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
- 
-<title>Sign Up</title>
- 
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/styles.css">
- 
-</head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Agência de Viagens</title>
+
+    <!-- Bootstrap -->
+    <link href="${pageContext.request.contextPath}/static/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="${pageContext.request.contextPath}/static/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <!-- NProgress -->
+    <link href="${pageContext.request.contextPath}/static/vendors/nprogress/nprogress.css" rel="stylesheet">
+    <!-- Animate.css -->
+    <link href="${pageContext.request.contextPath}/static/vendors/animate.css/animate.min.css" rel="stylesheet">
+
+    <!-- Custom Theme Style -->
+    <link href="${pageContext.request.contextPath}/static/build/css/custom.min.css" rel="stylesheet">
+  </head>
 <body>
- 
- 
-   <jsp:include page="_header.jsp" />
-   <jsp:include page="_menu.jsp" />
- 
- 
- 
-   <div class="page-title">Sign Up</div>
- 
-   <div class="login-container">
- 
-       <h3>Enter Details</h3>
-       <br>
-       <!-- /login?error=true -->
-       <c:if test="${param.error == 'true'}">
-           <div style="color: red; margin: 10px 0px;">
- 
-               Login Failed!!!<br /> Reason :
-               ${sessionScope["SPRING_SECURITY_LAST_EXCEPTION"].message}
- 
-           </div>
-       </c:if>
- 
- 		<form:form action="${pageContext.request.contextPath}/signUp" method="POST" modelAttribute="account">
- 			<table>
-               <tr>
-                   <td><form:label path="userName">User Name *</form:label></td>
-                   <td><form:input path="userName" required="required"/> </td>
-                   <td style="color:red;"><form:errors path="userName"></form:errors> </td>
-               </tr>
- 
-               <tr>
-                   <td><form:label path="password">Password *</form:label></td>
-                   <td><form:password path="password" required="required"/></td>
-                   <td style="color:red;"><form:errors path="password"></form:errors> </td>
-               </tr>
- 
- 			   <tr>
-                   <td><form:label path="confirmPassword">Confirm Password *</form:label></td>
-                   <td><form:password path="confirmPassword" required="required"/></td>
-                   <td style="color:red;"><form:errors path="confirmPassword"></form:errors> </td>
-               </tr> 
-               <tr>
-                   <td>&nbsp;</td>
-                   <td><input type="submit" value="Sign Up" /> <input type="reset"
-                       value="Reset" /></td>
-               </tr>
-           </table>
- 		</form:form>
-       <%-- <form method="POST"
-           action="${pageContext.request.contextPath}/j_spring_security_check">
-           <table>
-               <tr>
-                   <td>User Name *</td>
-                   <td><input name="userName" /></td>
-               </tr>
- 
-               <tr>
-                   <td>Password *</td>
-                   <td><input type="password" name="password" /></td>
-               </tr>
- 
-               <tr>
-                   <td>&nbsp;</td>
-                   <td><input type="submit" value="Login" /> <input type="reset"
-                       value="Reset" /></td>
-               </tr>
-           </table>
-       </form>
- 	   <a href="<c:url='/target'/>">Sign Up Here</a> --%>
-       <span class="error-message">${error }</span>
- 
-   </div>
- 
- 
-   <jsp:include page="_footer.jsp" />
- 
+    <div>
+      <div class="login_wrapper">
+		<div id="register" class="animate form registration_form">
+          <section class="login_content">
+            <form:form action="${pageContext.request.contextPath}/signUp" method="POST" modelAttribute="account">
+              <h1>Registre sua conta</h1>
+              <div>
+                <a style="color:red;"><form:errors path="userName"></form:errors></a>
+                <input type="text" class="form-control" path="userName" placeholder="Usuario" required="true" />
+              </div>
+              <div>
+                <a style="color:red;"><form:errors path="password"></form:errors></a>
+                <input type="password" class="form-control" path="password" placeholder="Senha" required="true" />
+              </div>
+              <div>
+                <input type="password" class="form-control" path="confirmPassword" placeholder="Repita a senha" required="true" />
+                <a style="color:red;"><form:errors path="confirmPassword"></form:errors></a>
+              </div>
+              <div>
+              	<a>&nbsp;</a>
+               <!-- <a class="btn btn-default submit" type="submit" value="Sign Up">Enviar</a> -->
+                <td><input type="submit" value="Sign Up" />
+              </div>
+
+              <div class="clearfix"></div>
+
+              <div class="separator">
+                <p class="change_link">Ja possui registro?
+                  <a href="/login" class="to_register"> Logar-se </a>
+                </p>
+
+                <div class="clearfix"></div>
+                <br />
+
+                <div>
+                  <h1><i class="fa fa-plane"></i> Agência de Viagens</h1>
+                  <p>©2018 All Rights Reserved.</p>
+                </div>
+              </div>
+            </form:form>
+          </section>
+       </div>
+	</div>
+</div>
 </body>
 </html>
