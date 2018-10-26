@@ -3,23 +3,12 @@
 <%@ page isELIgnored="false" %> 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <!DOCTYPE html>
+<t:template>
 <html>
-<head>
-<meta charset="UTF-8">
-<title>Product List</title>
- 
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/styles.css">
- 
-</head>
 <body>
- 
-   <jsp:include page="_header.jsp" />
-   <jsp:include page="_menu.jsp" />
- 
-   <div class="page-title">Product List</div>
- 
- 
  
    <c:forEach items="${list}" var="prodInfo">
        <div class="product-preview-container">
@@ -51,7 +40,6 @@
        </div>
    </c:if> --%>
  
-   <jsp:include page="_footer.jsp" />
- 
 </body>
 </html>
+</t:template>

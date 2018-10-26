@@ -1,4 +1,6 @@
 <%@tag description="Template que é utilizado na tela de login" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -12,16 +14,16 @@
     <title>Agência de Viagens</title>
 
     <!-- Bootstrap -->
-    <link href="/agencia/static/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../AgenciaPortal/static/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
-    <link href="/agencia/static/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="../AgenciaPortal/static/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <!-- NProgress -->
-    <link href="/agencia/static/vendors/nprogress/nprogress.css" rel="stylesheet">
+    <link href="../AgenciaPortal/static/vendors/nprogress/nprogress.css" rel="stylesheet">
     <!-- Animate.css -->
-    <link href="/agencia/static/vendors/animate.css/animate.min.css" rel="stylesheet">
+    <link href="../AgenciaPortal/static/vendors/animate.css/animate.min.css" rel="stylesheet">
 
     <!-- Custom Theme Style -->
-    <link href="/agencia/static/build/css/custom.min.css" rel="stylesheet">
+    <link href="../AgenciaPortal/static/build/css/custom.min.css" rel="stylesheet">
   </head>
 
   <body class="login">
@@ -32,16 +34,22 @@
       <div class="login_wrapper">
         <div class="animate form login_form">
           <section class="login_content">
-            <form name='f' action="${pageContext.request.contextPath}/j_spring_security_check" method='POST'>
+          	<c:if test="${param.error == 'true'}">
+           		<div style="color: red; margin: 10px 0px;">
+               		Login Failed!!!<br /> Reason :
+               		${sessionScope["SPRING_SECURITY_LAST_EXCEPTION"].message}
+           		</div>
+      		</c:if>
+            <form method="POST" action="${pageContext.request.contextPath}/j_spring_security_check">
               <h1>Área de Login</h1>
               <div>
-                <input type='text' name='username' class="form-control" value=''>
+                <input type='text' name="userName" class="form-control" value=''>
               </div>
               <div>
-                <input type='password' name='password' class="form-control"/>
+                <input type='password' name="password" class="form-control"/>
               </div>
               <div>
-                <input class="btn btn-default submit" name="submit" type="submit" value="Logar" />
+                <input class="btn btn-default submit" name="submit" type="submit" value="Login" />
                 <a class="reset_pass" href="#">Esqueceu sua senha?</a>
               </div>
 

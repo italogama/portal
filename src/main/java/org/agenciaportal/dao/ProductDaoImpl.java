@@ -6,7 +6,7 @@ import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
-import org.agenciaportal.entity.Product;
+import org.agenciaportal.entity.Products;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -19,11 +19,11 @@ public class ProductDaoImpl implements ProductDao {
 	    private SessionFactory sessionFactory;
 	 
 	    @Override
-	    public Product findProduct(String code) {
+	    public Products findProduct(String code) {
 	        Session session = sessionFactory.getCurrentSession();
-	        Criteria crit = session.createCriteria(Product.class);
+	        Criteria crit = session.createCriteria(Products.class);
 	        crit.add(Restrictions.eq("code", code));
-	        return (Product) crit.uniqueResult();
+	        return (Products) crit.uniqueResult();
 	    }
 	 
 	    
@@ -31,9 +31,9 @@ public class ProductDaoImpl implements ProductDao {
 
 		@SuppressWarnings("unchecked")
 		@Override
-		public List<Product> getAllProducts() {
+		public List<Products> getAllProducts() {
 			 Session session = sessionFactory.getCurrentSession();
-		     Criteria crit = session.createCriteria(Product.class);
+		     Criteria crit = session.createCriteria(Products.class);
 			return crit.list();
 		}
 

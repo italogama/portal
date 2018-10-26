@@ -1,4 +1,6 @@
-<%@tag description="Template que Ã© utilizado em todo sistema" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -8,22 +10,23 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <base href="/">
 
-    <title>AgÃªncia de Viagens</title>
+    <title>Agência de Viagens</title>
 
     <!-- Bootstrap -->
-    <link href="/agencia/static/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="<c:url value="/static/vendors/bootstrap/dist/css/bootstrap.min.css" />" type="text/css" rel="stylesheet">
     <!-- Font Awesome -->
-    <link href="/agencia/static/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="<c:url value="/static/vendors/font-awesome/css/font-awesome.min.css" />" rel="stylesheet">
     <!-- NProgress -->
-    <link href="/agencia/static/vendors/nprogress/nprogress.css" rel="stylesheet">
+    <link href="<c:url value="/static/vendors/nprogress/nprogress.css" />" rel="stylesheet">
     <!-- bootstrap-daterangepicker -->
-    <link href="/agencia/static/vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+    <link href="<c:url value="/static/vendors/bootstrap-daterangepicker/daterangepicker.css" />" rel="stylesheet">
     <!-- bootstrap-datetimepicker -->
-    <link href="/agencia/static/vendors/bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.css" rel="stylesheet">
+    <link href="<c:url value="/static/vendors/bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.css" />" rel="stylesheet">
 	
     <!-- Custom Theme Style -->
-    <link href="/agencia/static/build/css/custom.min.css" rel="stylesheet">
+    <link href="<c:url value="/static/build/css/custom.min.css" />" rel="stylesheet">
     
   </head>
 
@@ -33,7 +36,7 @@
         <div class="col-md-3 left_col">
           <div class="left_col scroll-view">
             <div class="navbar nav_title" style="border: 0;">
-              <a href="/agencia/app" class="site_title"><i class="fa fa-plane"></i> <span>AgÃªncia</span></a>
+              <a href="/agencia/app" class="site_title"><i class="fa fa-plane"></i> <span>Agência</span></a>
             </div>
 
             <div class="clearfix"></div>
@@ -41,7 +44,7 @@
             <!-- menu profile quick info -->
             <div class="profile clearfix">
               <div class="profile_pic">
-                <img src="/agencia/static/images/img.jpg" alt="..." class="img-circle profile_img">
+                <img src="<c:url value="/static/images/img.jpg" />" alt="..." class="img-circle profile_img">
               </div>
               <div class="profile_info">
                 <span>Bem vindo,</span>
@@ -66,15 +69,15 @@
                     </ul>
                   </li>
                   
-<!--                   <li><a><i class="fa fa-edit"></i> Produtos <span class="fa fa-chevron-down"></span></a> -->
-<!--                     <ul class="nav child_menu"> -->
-<%--                       <li><a href="${ path }/produtos">Passagens</a></li> --%>
-<!--                       <li><a href="produtos/page_404.html">HotÃ©is</a></li> -->
-<!--                       <li><a href="produtos/page_404.html">Pacotes</a></li> -->
-<!--                       <li><a href="produtos/page_404.html">Resorts</a></li> -->
-<!--                       <li><a href="produtos/page_404.html">Cruzeiros</a></li> -->
-<!--                     </ul> -->
-<!--                   </li> -->
+                  <li><a><i class="fa fa-edit"></i> Produtos <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="${ path }/produtos">Passagens</a></li>
+                      <li><a href="produtos/page_404.html">Hotéis</a></li>
+                      <li><a href="produtos/page_404.html">Pacotes</a></li>
+                      <li><a href="produtos/page_404.html">Resorts</a></li>
+                      <li><a href="produtos/page_404.html">Cruzeiros</a></li>
+                    </ul>
+                  </li>
                   
                 </ul>
               </div>
@@ -111,7 +114,7 @@
               <ul class="nav navbar-nav navbar-right">
                 <li class="">
                   <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                    <img src="/agencia/static/images/img.jpg" alt="">Visitante
+                    <img src="<c:url value="/static/images/img.jpg" />" alt="">Visitante
                     <span class=" fa fa-angle-down"></span>
                   </a>
                   <ul class="dropdown-menu dropdown-usermenu pull-right">
@@ -119,11 +122,11 @@
                     <li>
                       <a href="javascript:;">
                         <span class="badge bg-red pull-right">50%</span>
-                        <span>ConfiguraÃ§Ãµes</span>
+                        <span>Configurações</span>
                       </a>
                     </li>
                     <li><a href="javascript:;">Ajuda</a></li>
-                    <li><a href="login.html"><i class="fa fa-sign-out pull-right"></i> Deslogar</a></li>
+                    <li><a href="${pageContext.request.contextPath}/logout"><i class="fa fa-sign-out pull-right"></i> Deslogar</a></li>
                   </ul>
                 </li>
 
@@ -135,10 +138,10 @@
                   <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
                     <li>
                       <a>
-                        <span class="image"><img src="/agencia/static/images/img.jpg" alt="Profile Image" /></span>
+                        <span class="image"><img src="<c:url value="/static/images/img.jpg" />" alt="Profile Image" /></span>
                         <span>
-                          <span>Equipe AgÃªncia</span>
-                          <span class="time">3 mins atrÃ¡s</span>
+                          <span>Equipe Agência</span>
+                          <span class="time">3 mins atrás</span>
                         </span>
                         <span class="message">
                           Seja bem vindo ao nosso sistema!
@@ -166,7 +169,6 @@
           <div class="">
             <div class="page-title">
               <div class="title_left">
-                <h3>${titulo}</h3>
               </div>
              </div>
 
@@ -205,7 +207,7 @@
         <!-- footer content -->
         <footer>
           <div class="pull-right">
-            AgÃªncia - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
+            Agência - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
           </div>
           <div class="clearfix"></div>
         </footer>
@@ -214,18 +216,18 @@
     </div>
 
     <!-- jQuery -->
-    <script src="/agencia/static/vendors/jquery/dist/jquery.min.js"></script>
+    <script src="<c:url value="/static/vendors/jquery/dist/jquery.min.js" />"></script>
     <!-- Bootstrap -->
-    <script src="/agencia/static/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="<c:url value="/static/vendors/bootstrap/dist/js/bootstrap.min.js" />"></script>
     <!-- FastClick -->
-    <script src="/agencia/static/vendors/fastclick/lib/fastclick.js"></script>
+    <script src="<c:url value="/static/vendors/fastclick/lib/fastclick.js" />"></script>
     <!-- NProgress -->
-    <script src="/agencia/static/vendors/nprogress/nprogress.js"></script>
-    <script src="/agencia/static/js/pacotes.js"></script>
-    <script src="/agencia/static/vendors/jquery.inputmask/dist/min/jquery.inputmask.bundle.min.js"></script>
-    <script src="/agencia/static/vendors/mjolnic-bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js"></script>
+    <script src="<c:url value="/static/vendors/nprogress/nprogress.js" />"></script>
+    <script src="<c:url value="/static/js/pacotes.js" />"></script>
+    <script src="<c:url value="/static/vendors/jquery.inputmask/dist/min/jquery.inputmask.bundle.min.js" />"></script>
+    <script src="<c:url value="/static/vendors/mjolnic-bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js" />"></script>
     
     <!-- Custom Theme Scripts -->
-    <script src="/agencia/static/build/js/custom.min.js"></script>
+    <script src="<c:url value="/static/build/js/custom.min.js" />"></script>
   </body>
 </html>

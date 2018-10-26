@@ -25,7 +25,7 @@ public class Order implements Serializable{
     private int orderNum;
     private double amount;
     private int quantity;
-    private Product product;
+    private Products product;
     private Account account;
   
     @Id
@@ -68,10 +68,10 @@ public class Order implements Serializable{
 	@ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "PRODUCT_ID", nullable = false, //
     foreignKey = @ForeignKey(name = "ORDER_DETAIL_ORDER_FK") )
-	public Product getProduct() {
+	public Products getProduct() {
 		return product;
 	}
-	public void setProduct(Product product) {
+	public void setProduct(Products product) {
 		this.product = product;
 	}
 	@ManyToOne(fetch = FetchType.LAZY)

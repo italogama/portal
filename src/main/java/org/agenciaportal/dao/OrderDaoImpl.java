@@ -11,7 +11,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
 import org.agenciaportal.entity.Account;
 import org.agenciaportal.entity.Order;
-import org.agenciaportal.entity.Product;
+import org.agenciaportal.entity.Products;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -47,7 +47,7 @@ public class OrderDaoImpl implements OrderDao {
         int orderNum = this.getMaxOrderNum() + 1;
        
         Account account = accountDao.findAccount(username); 
-        Product product = productDAO.findProduct(code);
+        Products product = productDAO.findProduct(code);
         product.setQuantity(product.getQuantity()-quantity);
         Order order = new Order();
         order.setOrderNum(orderNum);

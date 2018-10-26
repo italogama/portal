@@ -9,7 +9,7 @@ import org.agenciaportal.dao.OrderDao;
 import org.agenciaportal.dao.ProductDao;
 import org.agenciaportal.entity.Account;
 import org.agenciaportal.entity.Order;
-import org.agenciaportal.entity.Product;
+import org.agenciaportal.entity.Products;
 import org.agenciaportal.exceptions.AlreadyLoginException;
 import org.agenciaportal.exceptions.NoOrderFoundException;
 import org.agenciaportal.exceptions.ProductOutOfStockException;
@@ -103,8 +103,16 @@ public class MainController {
         return "redirect:/productList";
     }
     
+    // Request HOME without logon
+    
+    @RequestMapping({ "/home","/" })
+    public String testeHandler(Model model
+          ) {
+        return "home";
+    }
+    
     // Product List page.
-    @RequestMapping({ "/productList","/" })
+    @RequestMapping({ "/productList" })
     public String listProductHandler(Model model
           ) {
         model.addAttribute("list",productDAO.getAllProducts());
@@ -119,7 +127,7 @@ public class MainController {
     		return "redirect:/productList";
     	}
     	
-        Product product = null;
+        Products product = null;
         if (code != null && code.length() > 0) {
             product = productDAO.findProduct(code);
         }

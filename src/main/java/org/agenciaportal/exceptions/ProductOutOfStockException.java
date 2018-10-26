@@ -11,6 +11,6 @@ public class ProductOutOfStockException extends RuntimeException{
 	private static final long serialVersionUID = 1L;
 
 	public ProductOutOfStockException() {
-		super("Product Out Of Stock");
+		super("Sem estoque do produto!");
 	}
 }

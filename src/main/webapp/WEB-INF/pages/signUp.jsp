@@ -84,7 +84,7 @@
                </tr>
            </table>
        </form>
- 	   <a href="${pageContext.request.contextPath}/signUp">Sign Up Here</a> --%>
+ 	   <a href="<c:url='/target'/>">Sign Up Here</a> --%>
        <span class="error-message">${error }</span>
  
    </div>

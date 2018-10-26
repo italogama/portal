@@ -11,6 +11,6 @@ public class AlreadyLoginException extends RuntimeException{
 	private static final long serialVersionUID = 1L;
 
 	public AlreadyLoginException() {
-	super("Already logged in user tried to access signup/login page");
+	super("Usuário ja logado tentou acessar a página de registro / login");
 	}
 }

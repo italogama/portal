@@ -10,6 +10,6 @@ public class NoOrderFoundException extends RuntimeException{
 	private static final long serialVersionUID = 1L;
 
 	public NoOrderFoundException() {
-		super("No Order found for logged in user");
+		super("Nenhum pedido encontrado para o usuário logado");
 	}
 }

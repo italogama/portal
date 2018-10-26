@@ -1,22 +1,27 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@ page isELIgnored="false" %> 
+<%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
- 
-<title>Access Denied</title>
- 
-<link rel="stylesheet" type="text/css"
-		 href="${pageContext.request.contextPath}/css/styles.css">
- 
-</head>
-<body>
-   <jsp:include page="_header.jsp" />
-   <jsp:include page="_menu.jsp" />
-   <div class="page-title">Access Denied!</div>
-   <h3 style="color:red;">Sorry, you can not access this page!</h3>
-   <jsp:include page="_footer.jsp" />
-</body>
+<html lang="en">
+<t:template>
+  <body class="nav-md">
+    <div class="container body">
+      <div class="main_container">
+        <!-- page content -->
+        <div class="col-md-12">
+          <div class="col-middle">
+            <div class="text-center text-center">
+              <h1 class="error-number">403</h1>
+              <h2>Acesso negado!</h2>
+              <p>Desculpe, você não pode acessar esta página.
+              </p>
+            </div>
+          </div>
+        </div>
+        <!-- /page content -->
+      </div>
+    </div>
+  </body>
+</t:template>
 </html>

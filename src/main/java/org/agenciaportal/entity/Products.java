@@ -8,7 +8,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "Products")
-public class Product implements Serializable{
+public class Products implements Serializable{
 
 	private static final long serialVersionUID = -2935941716489649804L;
 	private String code;
@@ -16,7 +16,7 @@ public class Product implements Serializable{
     private double price;
     private int quantity;
 
-    public Product() {
+    public Products() {
     }
     @Id
     @Column(name = "Code", length = 20, nullable = false)
