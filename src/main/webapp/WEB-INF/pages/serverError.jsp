@@ -1,23 +1,25 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<%@ page isELIgnored="false" %> 
+<%@ page isELIgnored="false" %>
+<%@taglib prefix="t" tagdir="/WEB-INF/tags" %> 
 <!DOCTYPE html>
+<t:template name="${pageContext.request.userPrincipal.name}">
 <html>
-<head>
-<meta charset="UTF-8">
- 
-<title>Error</title>
- 
-<link rel="stylesheet" type="text/css"
-      href="${pageContext.request.contextPath}/css/styles.css">
- 
-</head>
-<body>
-   <jsp:include page="_header.jsp" />
-   <jsp:include page="_menu.jsp" />
-   <h2>Error</h2>
-   <h3 style="color:red;">Server Error . Try after some time.</h3>
-   <jsp:include page="_footer.jsp" />
- 
-</body>
+  <body class="nav-md">
+    <div class="container body">
+      <div class="main_container">
+        <!-- page content -->
+        <div class="col-md-12">
+          <div class="col-middle">
+            <div class="text-center text-center">
+              <h1 class="error-number">Erro</h1>
+              <h2>Server Error . tente novamente mais tarde</h2>
+            </div>
+          </div>
+        </div>
+        <!-- /page content -->
+      </div>
+    </div>
+  </body>
 </html>
+</t:template>

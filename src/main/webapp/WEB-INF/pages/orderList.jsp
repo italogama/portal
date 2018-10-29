@@ -1,27 +1,22 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page isELIgnored="false" %>
+ <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <!DOCTYPE html>
+<t:template name="${pageContext.request.userPrincipal.name}">
 <html>
-<head>
-<meta charset="UTF-8">
-<title>Order List</title>
-<link rel="stylesheet" type="text/css" 
-	  href="${pageContext.request.contextPath}/css/styles.css">
-</head>
 <body>
-   <jsp:include page="_header.jsp" />
-   <jsp:include page="_menu.jsp" />
-   <div class="page-title">Order List</div>
-   <table border="1" style="width:100%">
-       <tr>
-           <th>Order Num</th>
-           <th>Order Name</th>
-           <th>Order Price</th>
-           <th>Order Date</th>
-           <th>Order Quantity</th>
-           <th>Amount</th>
-       </tr>
+   <table border="1" style="width:100%" class="table table-bordered">
+   	   <thead>
+        <tr>
+           <th>Nº Pedido</th>
+           <th>Nome pedido</th>
+           <th>Preço pedido</th>
+           <th>Data pedido</th>
+           <th>Quantidade pedido</th>
+           <th>Valor</th>
+       	</tr>
+       </thead>
        <c:forEach items="${list}" var="order">
            <tr>
                <td>${order.orderNum}</td>
@@ -37,6 +32,6 @@
            </tr>
        </c:forEach>
    </table>
-   <jsp:include page="_footer.jsp" />
 </body>
 </html>
+</t:template>

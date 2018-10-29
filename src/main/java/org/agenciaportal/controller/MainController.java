@@ -52,7 +52,7 @@ public class MainController {
     @Autowired
     private AccountValidator accountValidator;
  
-    @InitBinder
+    @InitBinder //fazer com que o Spring reconheça o validador
     public void myInitBinder(WebDataBinder dataBinder) {
         Object target = dataBinder.getTarget();
         if (target == null) {
@@ -105,7 +105,7 @@ public class MainController {
     
     // Request HOME without logon
     
-    @RequestMapping({ "/home","/" })
+    @RequestMapping({ "/home", "/" })
     public String testeHandler(Model model
           ) {
         return "home";

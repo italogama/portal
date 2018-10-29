@@ -2,18 +2,18 @@
  <%@ page isELIgnored="false" %>
  <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <!DOCTYPE html>
+<t:template name="${pageContext.request.userPrincipal.name}">
 <html>
-<t:template>
 	<body>
-	   <div class="page-title">Order Details</div>
+	   <div class="page-title">Detalhes do Pedido</div>
 	   <div class="container">
-	       <h3>Thank you for Order</h3>
-	       Your order number is: ${order.orderNum} <br>
-	       Name : ${order.product.name}<br>
-	       Price : ${order.product.price}<br>
-	       Quantity : ${order.quantity}<br>
-	       Total Amount : ${order.amount}<br> 
+	       <h3>Obrigado pelo pedido!</h3>
+	       O numero do seu pedido é: ${order.orderNum} <br>
+	       Nome : ${order.product.name}<br>
+	       Preço : ${order.product.price}<br>
+	       Quantidade : ${order.quantity}<br>
+	       Valor Total : ${order.amount}<br> 
 	   </div>
 	</body>
-</t:template>
 </html>
+</t:template>

@@ -6,7 +6,7 @@
 <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <!DOCTYPE html>
-<t:template>
+<t:template name="${pageContext.request.userPrincipal.name}">
 <html>
 <body>
  
@@ -14,11 +14,11 @@
        <div class="product-preview-container">
            <ul>
          
-               <li>Name: ${prodInfo.name}</li>
-               <li>Price: <fmt:formatNumber value="${prodInfo.price}" type="currency"/></li>
+               <li>Nome: ${prodInfo.name}</li>
+               <li>Preço: <fmt:formatNumber value="${prodInfo.price}" type="currency"/></li>
                <li><a
                    href="${pageContext.request.contextPath}/buyProduct?code=${prodInfo.code}">
-                       Buy Now</a></li>   
+                       Comprar</a></li>   
            </ul>
        </div>
  

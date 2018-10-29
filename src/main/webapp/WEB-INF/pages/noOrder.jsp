@@ -3,11 +3,11 @@
 <%@ page isELIgnored="false" %> 
 <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <!DOCTYPE html>
-<html>
-	<t:template>
+<t:template name="${pageContext.request.userPrincipal.name}">
+	<html>
 		<body>
 		   <h2>404</h2>
 		   <h3 style="color:red;">Você não realizou nenhum pedido</h3>
 		</body>
-	</t:template>
-</html>
+	</html>
+</t:template>

@@ -1,10 +1,16 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 
+<%@ attribute name="name" %>
+
+<% 
+if(name == null || name == "") name = "Visitante";
+%>
+
 
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+  <head	>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <!-- Meta, title, CSS, favicons, etc. -->
     <meta charset="utf-8">
@@ -17,16 +23,16 @@
     <!-- Bootstrap -->
     <link href="<c:url value="/static/vendors/bootstrap/dist/css/bootstrap.min.css" />" type="text/css" rel="stylesheet">
     <!-- Font Awesome -->
-    <link href="<c:url value="/static/vendors/font-awesome/css/font-awesome.min.css" />" rel="stylesheet">
+    <link href="<c:url value="/static/vendors/font-awesome/css/font-awesome.min.css" />" type="text/css" rel="stylesheet">
     <!-- NProgress -->
-    <link href="<c:url value="/static/vendors/nprogress/nprogress.css" />" rel="stylesheet">
+    <link href="<c:url value="/static/vendors/nprogress/nprogress.css" />" type="text/css" rel="stylesheet">
     <!-- bootstrap-daterangepicker -->
-    <link href="<c:url value="/static/vendors/bootstrap-daterangepicker/daterangepicker.css" />" rel="stylesheet">
+    <link href="<c:url value="/static/vendors/bootstrap-daterangepicker/daterangepicker.css" />" type="text/css" rel="stylesheet">
     <!-- bootstrap-datetimepicker -->
-    <link href="<c:url value="/static/vendors/bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.css" />" rel="stylesheet">
+    <link href="<c:url value="/static/vendors/bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.css" />" type="text/css" rel="stylesheet">
 	
     <!-- Custom Theme Style -->
-    <link href="<c:url value="/static/build/css/custom.min.css" />" rel="stylesheet">
+    <link href="<c:url value="/static/build/css/custom.min.css" />" type="text/css" rel="stylesheet">
     
   </head>
 
@@ -36,7 +42,7 @@
         <div class="col-md-3 left_col">
           <div class="left_col scroll-view">
             <div class="navbar nav_title" style="border: 0;">
-              <a href="/agencia/app" class="site_title"><i class="fa fa-plane"></i> <span>Agência</span></a>
+              <a href="AgenciaPortal/home" class="site_title"><i class="fa fa-plane"></i> <span>Agência</span></a>
             </div>
 
             <div class="clearfix"></div>
@@ -48,7 +54,7 @@
               </div>
               <div class="profile_info">
                 <span>Bem vindo,</span>
-                <h2>Visitante</h2>
+                <h2><%= name %></h2>
               </div>
               <div class="clearfix"></div>
             </div>
@@ -63,19 +69,19 @@
                 <ul class="nav side-menu">
                   <li><a><i class="fa fa-home"></i> Principal <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                    	<li><a href="/agencia/app">Index</a></li>
-                      <li><a href="/agencia/app/viagem">Viagem</a></li>
-                      <li><a href="/agencia/app/produtos">Produtos</a></li>
+                    	<li><a href="AgenciaPortal/home">Index</a></li>
+                      <li><a href="AgenciaPortal/orderList">Ultimas Compras</a></li>
+                      <li><a href="">Produtos</a></li>
                     </ul>
                   </li>
                   
                   <li><a><i class="fa fa-edit"></i> Produtos <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="${ path }/produtos">Passagens</a></li>
-                      <li><a href="produtos/page_404.html">Hotéis</a></li>
-                      <li><a href="produtos/page_404.html">Pacotes</a></li>
-                      <li><a href="produtos/page_404.html">Resorts</a></li>
-                      <li><a href="produtos/page_404.html">Cruzeiros</a></li>
+                      <li><a href="AgenciaPortal/productList">Passagens</a></li>
+                      <li><a href="">Hotéis</a></li>
+                      <li><a href="">Pacotes</a></li>
+                      <li><a href="">Resorts</a></li>
+                      <li><a href="">Cruzeiros</a></li>
                     </ul>
                   </li>
                   
@@ -95,7 +101,7 @@
               <a data-toggle="tooltip" data-placement="top" title="Lock">
                 <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
               </a>
-              <a data-toggle="tooltip" data-placement="top" title="Logout" href="/agencia/app/login">
+              <a data-toggle="tooltip" data-placement="top" title="Logout" href="/AgenciaPortal/logout">
                 <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
               </a>
             </div>
@@ -114,7 +120,7 @@
               <ul class="nav navbar-nav navbar-right">
                 <li class="">
                   <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                    <img src="<c:url value="/static/images/img.jpg" />" alt="">Visitante
+                    <img src="<c:url value="/static/images/img.jpg" />" alt=""><%= name %>
                     <span class=" fa fa-angle-down"></span>
                   </a>
                   <ul class="dropdown-menu dropdown-usermenu pull-right">
@@ -126,7 +132,7 @@
                       </a>
                     </li>
                     <li><a href="javascript:;">Ajuda</a></li>
-                    <li><a href="${pageContext.request.contextPath}/logout"><i class="fa fa-sign-out pull-right"></i> Deslogar</a></li>
+                    <li><a href="/AgenciaPortal/logout"><i class="fa fa-sign-out pull-right"></i> Deslogar</a></li>
                   </ul>
                 </li>
 

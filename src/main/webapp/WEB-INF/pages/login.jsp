@@ -22,6 +22,8 @@
     <link href="${pageContext.request.contextPath}/static/vendors/nprogress/nprogress.css" rel="stylesheet">
     <!-- Animate.css -->
     <link href="${pageContext.request.contextPath}/static/vendors/animate.css/animate.min.css" rel="stylesheet">
+    
+    <script src="${pageContext.request.contextPath}/static/js/jscustom.js"></script>
 
     <!-- Custom Theme Style -->
     <link href="${pageContext.request.contextPath}/static/build/css/custom.min.css" rel="stylesheet">
@@ -41,16 +43,16 @@
                		${sessionScope["SPRING_SECURITY_LAST_EXCEPTION"].message}
            		</div>
       		</c:if>
-            <form method="POST" action="${pageContext.request.contextPath}/j_spring_security_check">
+            <form id="formLogin" method="POST" action="${pageContext.request.contextPath}/j_spring_security_check">
               <h1>Área de Login</h1>
               <div>
-                <input type='text' name="userName" class="form-control" value=''>
+                <input type='text' name="userName" class="form-control" value="" placeholder="Usuario"/>
               </div>
               <div>
-                <input type='password' name="password" class="form-control"/>
+                <input type='password' name="password" class="form-control" placeholder="Senha"/>
               </div>
               <div>
-                <input class="btn btn-default submit" name="submit" type="submit" value="Login" />
+                <input id="submit" class="btn btn-default submit" name="submit" type="submit" value="Login" />
                 <a class="reset_pass" href="#">Esqueceu sua senha?</a>
               </div>
 

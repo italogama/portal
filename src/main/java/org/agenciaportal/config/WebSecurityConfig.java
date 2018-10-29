@@ -55,7 +55,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 	               .failureUrl("/login?error=true")
 	               .usernameParameter("userName")
 	               .passwordParameter("password")
-	               .and().logout().logoutUrl("/logout").logoutSuccessUrl("/");
+	               .and().logout().logoutUrl("/logout").logoutSuccessUrl("/login");
 	       
 	       if(logger.isInfoEnabled())
 	        	logger.info("Web security configured");
