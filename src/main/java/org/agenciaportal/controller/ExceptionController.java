@@ -24,7 +24,7 @@ public class ExceptionController {
 	@ExceptionHandler(ProductOutOfStockException.class)
 	public String productOutOfStock(ProductOutOfStockException ex)
 	{
-		return "outOfStock";
+		return "viagens/outOfStock";
 	}
 	
 	@ExceptionHandler(NoOrderFoundException.class)
@@ -36,7 +36,7 @@ public class ExceptionController {
 	@ExceptionHandler(AlreadyLoginException.class)
 	public String AlreadyLogin(AlreadyLoginException ex)
 	{
-		return "redirect:/productList";
+		return "redirect:/viagensList";
 	}
 	
 	@ExceptionHandler(SQLException.class)

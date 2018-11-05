@@ -4,7 +4,7 @@
 <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <!DOCTYPE html>
 <html lang="en">
-<t:template name="${pageContext.request.userPrincipal.name}">
+<t:template name="${pageContext.request.userPrincipal.name}" isAdmin="${isAdmin}">
   <body class="nav-md">
     <div class="container body">
       <div class="main_container">
@@ -15,8 +15,8 @@
               <h1 class="error-number">403</h1>
               <h2>Acesso negado!</h2>
               <p>Desculpe, você não pode acessar esta página.
-              <a type="button" class="btn btn-info" href="${pageContext.request.contextPath}/home">Voltar</a>
               </p>
+              <a type="button" class="btn btn-info" href="${pageContext.request.contextPath}/home">Voltar</a>
             </div>
           </div>
         </div>

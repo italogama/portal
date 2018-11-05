@@ -3,6 +3,6 @@
 <%@ page isELIgnored="false" %>
  <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <!DOCTYPE html>
-<t:template name="${pageContext.request.userPrincipal.name}">
+<t:template name="${pageContext.request.userPrincipal.name}" isAdmin="${isAdmin}">
 	<h1>Bem vindo ao nosso sistema!</h1>
 </t:template>

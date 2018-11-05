@@ -2,6 +2,7 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 
 <%@ attribute name="name" %>
+<%@ attribute name="isAdmin" type="java.lang.Boolean" %>
 
 <% 
 if(name == null || name == "") name = "Visitante";
@@ -70,14 +71,14 @@ if(name == null || name == "") name = "Visitante";
                   <li><a><i class="fa fa-home"></i> Principal <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                     	<li><a href="AgenciaPortal/home">Index</a></li>
-                      <li><a href="AgenciaPortal/orderList">Ultimas Compras</a></li>
+                      <li><a href="AgenciaPortal/ultimasViagens">Ultimas Viagens</a></li>
                       <li><a href="">Produtos</a></li>
                     </ul>
                   </li>
                   
-                  <li><a><i class="fa fa-edit"></i> Produtos <span class="fa fa-chevron-down"></span></a>
+                  <li><a><i class="fa fa-edit"></i> Pacotes <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="AgenciaPortal/productList">Passagens</a></li>
+                      <li><a href="AgenciaPortal/viagensList">Passagens</a></li>
                       <li><a href="">Hotéis</a></li>
                       <li><a href="">Pacotes</a></li>
                       <li><a href="">Resorts</a></li>
@@ -125,12 +126,16 @@ if(name == null || name == "") name = "Visitante";
                   </a>
                   <ul class="dropdown-menu dropdown-usermenu pull-right">
                     <li><a href="javascript:;"> Perfil</a></li>
+                    <% if(isAdmin) { %>
                     <li>
                       <a href="javascript:;">
                         <span class="badge bg-red pull-right">50%</span>
                         <span>Configurações</span>
                       </a>
                     </li>
+					<% } %>
+                    
+                    
                     <li><a href="javascript:;">Ajuda</a></li>
                     <li><a href="/AgenciaPortal/logout"><i class="fa fa-sign-out pull-right"></i> Deslogar</a></li>
                   </ul>

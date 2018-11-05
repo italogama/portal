@@ -4,7 +4,7 @@
 <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <!DOCTYPE html>
 <html lang="en">
-<t:template name="${pageContext.request.userPrincipal.name}">
+<t:template name="${pageContext.request.userPrincipal.name}" isAdmin="${isAdmin}">
   <body class="nav-md">
     <div class="container body">
       <div class="main_container">

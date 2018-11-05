@@ -3,7 +3,7 @@
 <%@ page isELIgnored="false" %>
  <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <!DOCTYPE html>
-<t:template name="${pageContext.request.userPrincipal.name}">
+<t:template name="${pageContext.request.userPrincipal.name}" isAdmin="${isAdmin}">
 <html>
 <body>
    <table border="1" style="width:100%" class="table table-bordered">
@@ -11,6 +11,8 @@
         <tr>
            <th>Nº Pedido</th>
            <th>Nome pedido</th>
+           <th>Data Ida</th>
+           <th>Data Volta</th>
            <th>Preço pedido</th>
            <th>Data pedido</th>
            <th>Quantidade pedido</th>
@@ -21,6 +23,12 @@
            <tr>
                <td>${order.orderNum}</td>
                <td>${order.product.name}</td>
+               <td>
+                  <fmt:formatDate value="${order.goDate}" pattern="dd-MM-yyyy"/>
+               </td>
+               <td>
+                  <fmt:formatDate value="${order.backDate}" pattern="dd-MM-yyyy"/>
+               </td>
                <td> <fmt:formatNumber value="${order.product.price}" type="currency"/></td>
                <td>
                   <fmt:formatDate value="${order.orderDate}" pattern="dd-MM-yyyy HH:mm"/>

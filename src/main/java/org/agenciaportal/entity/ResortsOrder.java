@@ -2,6 +2,7 @@ package org.agenciaportal.entity;
 
 import java.io.Serializable;
 import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -15,17 +16,19 @@ import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
 @Entity
-@Table(name = "Orders",
+@Table(name = "Resorts Order",
 uniqueConstraints = { @UniqueConstraint(columnNames = "Order_Num") })
-public class Order implements Serializable{
+public class ResortsOrder implements Serializable{
 
 	private static final long serialVersionUID = 4376321196779705670L;
 	private Integer id;
     private Date orderDate;
+    private Date goDate;
+    private Date backDate;
     private int orderNum;
     private double amount;
     private int quantity;
-    private Products product;
+    private Resorts product;
     private Account account;
   
     @Id
@@ -44,7 +47,23 @@ public class Order implements Serializable{
     public void setOrderDate(Date orderDate) {
         this.orderDate = orderDate;
     }
-    @Column(name = "Order_Num", nullable = false)
+    
+    @Column(name = "Go_Date", nullable = false)
+    public Date getGoDate() {
+		return goDate;
+	}
+	public void setGoDate(Date goDate) {
+		this.goDate = goDate;
+	}
+	
+	@Column(name = "Back_Date", nullable = false)
+	public Date getBackDate() {
+		return backDate;
+	}
+	public void setBackDate(Date backDate) {
+		this.backDate = backDate;
+	}
+	@Column(name = "Order_Num", nullable = false)
     public int getOrderNum() {
         return orderNum;
     }
@@ -68,10 +87,10 @@ public class Order implements Serializable{
 	@ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "PRODUCT_ID", nullable = false, //
     foreignKey = @ForeignKey(name = "ORDER_DETAIL_ORDER_FK") )
-	public Products getProduct() {
+	public Resorts getProduct() {
 		return product;
 	}
-	public void setProduct(Products product) {
+	public void setProduct(Resorts product) {
 		this.product = product;
 	}
 	@ManyToOne(fetch = FetchType.LAZY)
