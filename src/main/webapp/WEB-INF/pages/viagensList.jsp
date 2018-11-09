@@ -9,7 +9,7 @@
 <t:template name="${pageContext.request.userPrincipal.name}" isAdmin="${isAdmin}">
 <html>
 <body>
- 
+ 	<h1>${productType.description}</h1>
    <c:forEach items="${list}" var="prodInfo">
        <div class="product-preview-container">
            <ul>

@@ -7,6 +7,7 @@ import org.agenciaportal.entity.Product;
 public interface ProductDao {
 
 	public Product findProduct(String code);
-    public List<Product> getAllProducts();
+    public List<Product> getAllProductsByType(Long typeId);
+    public List<Product> getAllProductsByAlias(String alias);
    
 }

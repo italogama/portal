@@ -78,8 +78,9 @@ if(name == null || name == "") name = "Visitante";
                   
                   <li><a><i class="fa fa-edit"></i> Pacotes <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="AgenciaPortal/viagensList">Passagens</a></li>
-                      <li><a href="AgenciaPortal/resortsList">Resorts</a></li>
+                    
+                      <li><a href="AgenciaPortal/viagens/passagens">Passagens</a></li>
+                      <li><a href="AgenciaPortal/resortsList/2">Resorts</a></li>
                       <li><a href="">Pacotes</a></li>
                       <li><a href="">Resorts</a></li>
                       <li><a href="">Cruzeiros</a></li>
@@ -239,5 +240,11 @@ if(name == null || name == "") name = "Visitante";
     
     <!-- Custom Theme Scripts -->
     <script src="<c:url value="/static/build/js/custom.min.js" />"></script>
+  <script type="javascript">
+	$(function() {
+           alert('oi');
+        });
+  </script>
   </body>
+  	
 </html>

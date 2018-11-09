@@ -23,17 +23,25 @@ public class ProductDaoImpl implements ProductDao {
 	        Session session = sessionFactory.getCurrentSession();
 	        Criteria crit = session.createCriteria(Product.class);
 	        crit.add(Restrictions.eq("code", code));
+	       
 	        return (Product) crit.uniqueResult();
 	    }
-	 
-	    
-	 
 
 		@SuppressWarnings("unchecked")
 		@Override
-		public List<Product> getAllProducts() {
+		public List<Product> getAllProductsByType(Long typeId) {
 			 Session session = sessionFactory.getCurrentSession();
 		     Criteria crit = session.createCriteria(Product.class);
+		     crit.add(Restrictions.eq("productType.id", typeId));
+			return crit.list();
+		}
+
+		@Override
+		public List<Product> getAllProductsByAlias(String alias) {
+			 Session session = sessionFactory.getCurrentSession();
+		     Criteria crit = session.createCriteria(Product.class);
+		     Criteria cType = crit.createCriteria("productType");
+		     cType.add(Restrictions.eq("alias", alias));
 			return crit.list();
 		}
 

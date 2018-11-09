@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.agenciaportal.authentication.SecurityService;
 import org.agenciaportal.dao.ProductDao;
 import org.agenciaportal.dao.ProductOrderDao;
+import org.agenciaportal.dao.ProductTypeDao;
 import org.agenciaportal.entity.Order;
 import org.agenciaportal.entity.Product;
 import org.agenciaportal.exceptions.NoOrderFoundException;
@@ -18,6 +19,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -34,21 +36,27 @@ public class ProductController {
 	
 	@Autowired
     private ProductDao viagensDAO;
-	
 	@Autowired
     private ProductOrderDao viagemOrderDAO;
-	
 	@Autowired
     private SecurityService securityService;
-	
 	@Autowired
     private ProductOrderDao orderDAO;
+	@Autowired
+	private ProductTypeDao productTypeDao;  
 	
 	// Product List page.
-    @RequestMapping({ "/viagensList" })
-    public String listViagensHandler(Model model
-          ) {
-        model.addAttribute("list",viagensDAO.getAllProducts());
+    @RequestMapping({ "/viagensList/{typeId}" })
+    public String listViagensHandler(Model model, @PathVariable("typeId") Long typeId) {
+        model.addAttribute("list",viagensDAO.getAllProductsByType(typeId));
+        return "/viagensList";
+    }
+    
+    // Product List page.
+    @RequestMapping({ "/viagens/{alias}" })
+    public String listViagensHandler(Model model, @PathVariable("alias") String alias) {
+        model.addAttribute("list",viagensDAO.getAllProductsByAlias(alias));
+        model.addAttribute("productType", productTypeDao.getByAlias(alias));
         return "/viagensList";
     }
     
