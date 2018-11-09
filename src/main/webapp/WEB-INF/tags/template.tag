@@ -79,7 +79,7 @@ if(name == null || name == "") name = "Visitante";
                   <li><a><i class="fa fa-edit"></i> Pacotes <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="AgenciaPortal/viagensList">Passagens</a></li>
-                      <li><a href="">Hotéis</a></li>
+                      <li><a href="AgenciaPortal/resortsList">Resorts</a></li>
                       <li><a href="">Pacotes</a></li>
                       <li><a href="">Resorts</a></li>
                       <li><a href="">Cruzeiros</a></li>
@@ -125,16 +125,15 @@ if(name == null || name == "") name = "Visitante";
                     <span class=" fa fa-angle-down"></span>
                   </a>
                   <ul class="dropdown-menu dropdown-usermenu pull-right">
-                    <li><a href="javascript:;"> Perfil</a></li>
-                    <% if(isAdmin) { %>
+                  	 <% if(isAdmin) { %>
                     <li>
-                      <a href="javascript:;">
-                        <span class="badge bg-red pull-right">50%</span>
-                        <span>Configurações</span>
+                      <a href="/AgenciaPortal/homeadmin">
+                        <span class="badge bg-red pull-right">ONLY ADMIN</span>
+                        <span>Administrativo</span>
                       </a>
                     </li>
 					<% } %>
-                    
+                    <li><a href="javascript:;"> Perfil</a></li>
                     
                     <li><a href="javascript:;">Ajuda</a></li>
                     <li><a href="/AgenciaPortal/logout"><i class="fa fa-sign-out pull-right"></i> Deslogar</a></li>

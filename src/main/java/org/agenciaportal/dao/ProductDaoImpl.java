@@ -2,28 +2,28 @@ package org.agenciaportal.dao;
 
 import java.util.List;
 
-import org.agenciaportal.entity.Resorts;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
+import org.agenciaportal.entity.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 @Transactional
 @Repository
-public class ResortsDaoImpl implements ResortsDao {
+public class ProductDaoImpl implements ProductDao {
 
 	 	@Autowired
 	    private SessionFactory sessionFactory;
 	 
 	    @Override
-	    public Resorts findProduct(String code) {
+	    public Product findProduct(String code) {
 	        Session session = sessionFactory.getCurrentSession();
-	        Criteria crit = session.createCriteria(Resorts.class);
+	        Criteria crit = session.createCriteria(Product.class);
 	        crit.add(Restrictions.eq("code", code));
-	        return (Resorts) crit.uniqueResult();
+	        return (Product) crit.uniqueResult();
 	    }
 	 
 	    
@@ -31,11 +31,10 @@ public class ResortsDaoImpl implements ResortsDao {
 
 		@SuppressWarnings("unchecked")
 		@Override
-		public List<Resorts> getAllProducts() {
+		public List<Product> getAllProducts() {
 			 Session session = sessionFactory.getCurrentSession();
-		     Criteria crit = session.createCriteria(Resorts.class);
+		     Criteria crit = session.createCriteria(Product.class);
 			return crit.list();
 		}
 
 }
-

@@ -6,10 +6,10 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
 import org.agenciaportal.authentication.SecurityService;
-import org.agenciaportal.dao.ViagemDao;
-import org.agenciaportal.dao.ViagemOrderDao;
-import org.agenciaportal.entity.ViagemOrder;
-import org.agenciaportal.entity.Viagens;
+import org.agenciaportal.dao.ProductDao;
+import org.agenciaportal.dao.ProductOrderDao;
+import org.agenciaportal.entity.Order;
+import org.agenciaportal.entity.Product;
 import org.agenciaportal.exceptions.NoOrderFoundException;
 import org.agenciaportal.exceptions.ProductOutOfStockException;
 import org.apache.log4j.Logger;
@@ -28,28 +28,28 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 @Transactional
 //Need to use RedirectAttributes
 @EnableWebMvc
-public class ViagensController {
+public class ProductController {
 	
 	public static Logger logger = Logger.getLogger(MainController.class);
 	
 	@Autowired
-    private ViagemDao viagensDAO;
+    private ProductDao viagensDAO;
 	
 	@Autowired
-    private ViagemOrderDao viagemOrderDAO;
+    private ProductOrderDao viagemOrderDAO;
 	
 	@Autowired
     private SecurityService securityService;
 	
 	@Autowired
-    private ViagemOrderDao orderDAO;
+    private ProductOrderDao orderDAO;
 	
 	// Product List page.
     @RequestMapping({ "/viagensList" })
     public String listViagensHandler(Model model
           ) {
         model.addAttribute("list",viagensDAO.getAllProducts());
-        return "viagens/viagensList";
+        return "/viagensList";
     }
     
     @RequestMapping({ "/buyProduct" })
@@ -57,10 +57,10 @@ public class ViagensController {
             @RequestParam(value = "code", defaultValue = "") String code) {
     	if(code.isEmpty())
     	{
-    		return "redirect:viagens/viagensList";
+    		return "redirect:/viagensList";
     	}
     	
-        Viagens product = null;
+        Product product = null;
         if (code != null && code.length() > 0) {
             product = viagensDAO.findProduct(code);
         }
@@ -72,7 +72,7 @@ public class ViagensController {
         	}
         	model.addAttribute("product",product);
         }
-        return "viagens/confirmation";
+        return "/confirmation";
     }
     
     @RequestMapping(value = { "/purchase" }, method = RequestMethod.POST)
@@ -88,20 +88,20 @@ public class ViagensController {
     	Date x = new Date(godate);
     	Date x2 = new Date(backdate);
     	
-    	ViagemOrder order = viagemOrderDAO.saveOrder(code, quantity, x, x2, securityService.findLoggedInUsername());
+    	Order order = viagemOrderDAO.saveOrder(code, quantity, x, x2, securityService.findLoggedInUsername());
     	model.addAttribute("order",order);
     	 if(logger.isInfoEnabled())
     	        logger.info("Product purchased having code "+code+", quantity "+quantity);
-        return "viagens/orderDetail";
+        return "/orderDetail";
     }
     
     @RequestMapping(value = { "/ultimasViagens" }, method = RequestMethod.GET)
     public String getOrderByUsername(HttpServletRequest request, Model model) {
-    	List<ViagemOrder> list = orderDAO.getOrdersByUserName(securityService.findLoggedInUsername());
+    	List<Order> list = orderDAO.getOrdersByUserName(securityService.findLoggedInUsername());
     	if(list.isEmpty())
     		throw new NoOrderFoundException();
     	model.addAttribute("list",list);
-        return "viagens/ultimasViagens";
+        return "/ultimasViagens";
     }
 
 }

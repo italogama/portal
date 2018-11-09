@@ -29,5 +29,10 @@ public class MainController {
         return "home";
     }
     
+    @RequestMapping({ "/homeadmin"})
+    public String adminHandler(HttpServletRequest request, Model model) {
+    	model.addAttribute("isAdmin", request.isUserInRole("ADMIN"));
+        return "admin/homeadmin";
+    }
     
 }

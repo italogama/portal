@@ -20,7 +20,7 @@
 	          <li>Data Volta:<input type="text" name="backDate" class="form-control" data-inputmask="'mask': '99/99/9999'"></li>
 	      </ul>
 	      <input class="btn btn-success" type="submit" value="Comprar"/>
-	      <a type="button" class="btn btn-danger" href="${pageContext.request.contextPath}/productList">Cancelar</a>
+	      <a type="button" class="btn btn-danger" href="${pageContext.request.contextPath}/viagensList">Cancelar</a>
 	      </form>
 	  </div>
 	</body>

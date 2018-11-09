@@ -30,3 +30,4 @@ public class Role {
         this.accounts = accounts;
     }
 }
+

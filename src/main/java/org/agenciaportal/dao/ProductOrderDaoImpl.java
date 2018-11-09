@@ -4,8 +4,8 @@ import java.util.Date;
 import java.util.List;
 
 import org.agenciaportal.entity.Account;
-import org.agenciaportal.entity.ResortsOrder;
-import org.agenciaportal.entity.Resorts;
+import org.agenciaportal.entity.Order;
+import org.agenciaportal.entity.Product;
 import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -17,19 +17,19 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Transactional
 @Repository
-public class ResortsOrderDaoImpl implements ResortsOrderDao {
+public class ProductOrderDaoImpl implements ProductOrderDao {
 
 	@Autowired
     private SessionFactory sessionFactory;
  
     @Autowired
-    private ResortsDao resortsDAO;
+    private ProductDao viagensDAO;
     
     @Autowired
     private AccountDao accountDao;
  
     private int getMaxOrderNum() {
-        String sql = "Select max(o.orderNum) from " + ResortsOrder.class.getName() + " o ";
+        String sql = "Select max(o.orderNum) from " + Order.class.getName() + " o ";
         Session session = sessionFactory.getCurrentSession();
         Query query = session.createQuery(sql);
         Integer value = (Integer) query.uniqueResult();
@@ -40,15 +40,15 @@ public class ResortsOrderDaoImpl implements ResortsOrderDao {
     }
  
     @Override
-    public ResortsOrder saveOrder(String code,int quantity, Date x, Date x2, String username) {
+    public Order saveOrder(String code,int quantity, Date x, Date x2, String username) {
         Session session = sessionFactory.getCurrentSession();
 
         int orderNum = this.getMaxOrderNum() + 1;
        
         Account account = accountDao.findAccount(username); 
-        Resorts product = resortsDAO.findProduct(code);
+        Product product = viagensDAO.findProduct(code);
         product.setQuantity(product.getQuantity()-quantity);
-        ResortsOrder order = new ResortsOrder();
+        Order order = new Order();
         order.setOrderNum(orderNum);
         order.setOrderDate(new Date());
         order.setGoDate(x);
@@ -62,26 +62,41 @@ public class ResortsOrderDaoImpl implements ResortsOrderDao {
         return order;
     }
  
-    public ResortsOrder findOrder(String orderId) {
+    /*// @page = 1, 2, ...
+    @Override
+    public PaginationResult<OrderInfo> listOrderInfo(int page, int maxResult, int maxNavigationPage) {
+        String sql = "Select new " + OrderInfo.class.getName()//
+                + "(ord.id, ord.orderDate, ord.orderNum, ord.amount, "
+                + " ord.customerName, ord.customerAddress, ord.customerEmail, ord.customerPhone) " + " from "
+                + Order.class.getName() + " ord "//
+                + " order by ord.orderNum desc";
+        Session session = this.sessionFactory.getCurrentSession();
+ 
+        Query query = session.createQuery(sql);
+ 
+        return new PaginationResult<OrderInfo>(query, page, maxResult, maxNavigationPage);
+    }*/
+ 
+    public Order findOrder(String orderId) {
         Session session = sessionFactory.getCurrentSession();
-        Criteria crit = session.createCriteria(ResortsOrder.class);
+        Criteria crit = session.createCriteria(Order.class);
         crit.add(Restrictions.eq("id", orderId));
-        return (ResortsOrder) crit.uniqueResult();
+        return (Order) crit.uniqueResult();
     }
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<ResortsOrder> getOrdersByUserName(String username) {
+	public List<Order> getOrdersByUserName(String username) {
 		
 		Session session = sessionFactory.getCurrentSession();
 		Account account =accountDao.findAccount(username); 
-        Criteria crit = session.createCriteria(ResortsOrder.class);
+        Criteria crit = session.createCriteria(Order.class);
         crit.add(Restrictions.eq("account.userId", account.getUserId()));
-        List<ResortsOrder> list = (List<ResortsOrder>) crit.list();
+        List<Order> list = (List<Order>) crit.list();
+        /*list.forEach(Order::getProduct);*/
 		return list;
 	}
  
    
 
 }
-

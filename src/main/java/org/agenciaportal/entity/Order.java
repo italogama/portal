@@ -2,7 +2,6 @@ package org.agenciaportal.entity;
 
 import java.io.Serializable;
 import java.util.Date;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -16,9 +15,9 @@ import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
 @Entity
-@Table(name = "Resorts Order",
+@Table(name = "Orders",
 uniqueConstraints = { @UniqueConstraint(columnNames = "Order_Num") })
-public class ResortsOrder implements Serializable{
+public class Order implements Serializable{
 
 	private static final long serialVersionUID = 4376321196779705670L;
 	private Integer id;
@@ -28,7 +27,7 @@ public class ResortsOrder implements Serializable{
     private int orderNum;
     private double amount;
     private int quantity;
-    private Resorts product;
+    private Product product;
     private Account account;
   
     @Id
@@ -47,27 +46,25 @@ public class ResortsOrder implements Serializable{
     public void setOrderDate(Date orderDate) {
         this.orderDate = orderDate;
     }
+    @Column(name = "Order_Num", nullable = false)
+    public int getOrderNum() {
+        return orderNum;
+    }
     
-    @Column(name = "Go_Date", nullable = false)
+   
     public Date getGoDate() {
 		return goDate;
 	}
 	public void setGoDate(Date goDate) {
 		this.goDate = goDate;
 	}
-	
-	@Column(name = "Back_Date", nullable = false)
 	public Date getBackDate() {
 		return backDate;
 	}
 	public void setBackDate(Date backDate) {
 		this.backDate = backDate;
 	}
-	@Column(name = "Order_Num", nullable = false)
-    public int getOrderNum() {
-        return orderNum;
-    }
-    public void setOrderNum(int orderNum) {
+	public void setOrderNum(int orderNum) {
         this.orderNum = orderNum;
     }
     @Column(name = "Amount", nullable = false)
@@ -87,10 +84,10 @@ public class ResortsOrder implements Serializable{
 	@ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "PRODUCT_ID", nullable = false, //
     foreignKey = @ForeignKey(name = "ORDER_DETAIL_ORDER_FK") )
-	public Resorts getProduct() {
+	public Product getProduct() {
 		return product;
 	}
-	public void setProduct(Resorts product) {
+	public void setProduct(Product product) {
 		this.product = product;
 	}
 	@ManyToOne(fetch = FetchType.LAZY)

@@ -25,7 +25,7 @@ public class MyDBAuthenticationService implements UserDetailsService{
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Account account = accountDAO.findAccount(username);
         if (account == null) {
-            throw new  UsernameNotFoundException("User "+username+" was not found in the database");
+            throw new  UsernameNotFoundException("Usuario "+username+" não foi encontrado");
         }
  
         Set<GrantedAuthority> grantedAuthorities = new HashSet<>();

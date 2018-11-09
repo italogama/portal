@@ -1,15 +1,14 @@
 package org.agenciaportal.entity;
 
 import java.io.Serializable;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "Resorts")
-public class Resorts implements Serializable{
+@Table(name = "Products")
+public class Product implements Serializable{
 
 	private static final long serialVersionUID = -2935941716489649804L;
 	private String code;
@@ -17,7 +16,7 @@ public class Resorts implements Serializable{
     private double price;
     private int quantity;
 
-    public Resorts() {
+    public Product() {
     }
     @Id
     @Column(name = "Code", length = 20, nullable = false)
