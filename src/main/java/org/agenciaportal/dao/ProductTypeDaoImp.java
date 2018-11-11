@@ -2,7 +2,6 @@ package org.agenciaportal.dao;
 
 import java.util.List;
 
-import org.agenciaportal.entity.Order;
 import org.agenciaportal.entity.ProductType;
 import org.hibernate.Criteria;
 import org.hibernate.Session;

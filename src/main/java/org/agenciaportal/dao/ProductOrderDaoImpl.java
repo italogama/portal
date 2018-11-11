@@ -89,7 +89,7 @@ public class ProductOrderDaoImpl implements ProductOrderDao {
 	public List<Order> getOrdersByUserName(String username) {
 		
 		Session session = sessionFactory.getCurrentSession();
-		Account account =accountDao.findAccount(username); 
+		Account account = accountDao.findAccount(username); 
         Criteria crit = session.createCriteria(Order.class);
         crit.add(Restrictions.eq("account.userId", account.getUserId()));
         List<Order> list = (List<Order>) crit.list();

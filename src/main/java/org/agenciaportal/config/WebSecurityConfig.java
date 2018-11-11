@@ -43,7 +43,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 	 
 	       http.csrf().disable();
 	 
-	       http.authorizeRequests().antMatchers("/viagensList","/buyProduct")
+	       //Protege urls contra acesso sem login
+	       http.authorizeRequests().antMatchers("/viagens","/buyProduct", "/ultimasViagens")
 	               .access("hasAnyRole('ROLE_USER', 'ROLE_ADMIN')");
 	       
 	       http.authorizeRequests().antMatchers("/homeadmin")

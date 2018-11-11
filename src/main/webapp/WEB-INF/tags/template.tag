@@ -241,9 +241,9 @@ if(name == null || name == "") name = "Visitante";
     <!-- Custom Theme Scripts -->
     <script src="<c:url value="/static/build/js/custom.min.js" />"></script>
   <script type="javascript">
-	$(function() {
-           alert('oi');
-        });
+  	$(document).ready(function() {
+	    alert('oi');
+	});
   </script>
   </body>
   	
