@@ -80,7 +80,7 @@ if(name == null || name == "") name = "Visitante";
                     <ul class="nav child_menu">
                     
                       <li><a href="AgenciaPortal/viagens/passagens">Passagens</a></li>
-                      <li><a href="AgenciaPortal/resortsList/2">Resorts</a></li>
+                      <li><a href="AgenciaPortal/viagens/resort">Resorts</a></li>
                       <li><a href="">Pacotes</a></li>
                       <li><a href="">Resorts</a></li>
                       <li><a href="">Cruzeiros</a></li>

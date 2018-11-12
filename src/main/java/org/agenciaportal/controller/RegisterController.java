@@ -73,6 +73,6 @@ public class RegisterController {
 		String password = account.getPassword();
 		accountDao.saveAccount(account);
 		securityService.autologin(account.getUserName(), password);
-		return "redirect:/viagensList";
+		return "redirect:/home";
 	}
 }

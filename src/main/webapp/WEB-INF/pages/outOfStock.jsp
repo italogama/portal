@@ -14,7 +14,7 @@
             <div class="text-center text-center">
               <h1 class="error-number">404</h1>
               <h2>Desculpe, estamos sem estoque deste produto!</h2>
-              <a type="button" class="btn btn-info" href="${pageContext.request.contextPath}/viagensList">Voltar</a>
+              <button type="button" class="btn btn-danger" onclick="window.history.back()">Cancelar</button>
             </div>
           </div>
         </div>
