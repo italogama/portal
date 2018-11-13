@@ -9,7 +9,8 @@
 <html>
 <body>
  	<h1>${productType.description}</h1>
-   <c:forEach items="${list}" var="prodInfo">
+ 	<h1>teste</h1>
+   <c:forEach items="${produtosList}" var="prodInfo">
        <div class="product-preview-container">
            <ul>
          
