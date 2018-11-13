@@ -9,5 +9,6 @@ public interface ProductDao {
 	public Product findProduct(String code);
     public List<Product> getAllProductsByType(Long typeId);
     public List<Product> getAllProductsByAlias(String alias);
+    public List<Product> listarProdutosAdm();
    
 }

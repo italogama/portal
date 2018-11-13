@@ -62,7 +62,8 @@ public class ProductController {
     
     @RequestMapping({ "/buyProduct" })
     public String buyProduct(HttpServletRequest request, Model model, //
-            @RequestParam(value = "code", defaultValue = "") String code) {
+            @RequestParam(value = "code", defaultValue = "") String code,
+    		@RequestParam(value = "productType" , defaultValue = "") String productType) {
     	if(code.isEmpty())
     	{
     		return "redirect:/viagensList";
@@ -88,15 +89,16 @@ public class ProductController {
     @Transactional(propagation = Propagation.NEVER)
     public String purchaseProduct(HttpServletRequest request, Model model) {
     	String code = request.getParameter("code");
+    	String productType = request.getParameter("type");
     	int quantity =Integer.parseInt( request.getParameter("quantity"));
     	@SuppressWarnings("deprecation")
 		Long godate = Date.parse(request.getParameter("goDate"));
     	@SuppressWarnings("deprecation")
 		Long backdate = Date.parse(request.getParameter("backDate"));
-    	Date x = new Date(godate);
-    	Date x2 = new Date(backdate);
+    	Date ida = new Date(godate);
+    	Date volta = new Date(backdate);
     	
-    	Order order = viagemOrderDAO.saveOrder(code, quantity, x, x2, securityService.findLoggedInUsername());
+    	Order order = viagemOrderDAO.saveOrder(code,productType, quantity, ida, volta, securityService.findLoggedInUsername());
     	model.addAttribute("order",order);
     	 if(logger.isInfoEnabled())
     	        logger.info("Product purchased having code "+code+", quantity "+quantity);

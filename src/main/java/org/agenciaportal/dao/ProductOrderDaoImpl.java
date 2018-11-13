@@ -40,7 +40,7 @@ public class ProductOrderDaoImpl implements ProductOrderDao {
     }
  
     @Override
-    public Order saveOrder(String code,int quantity, Date x, Date x2, String username) {
+    public Order saveOrder(String code, String type,int quantity, Date ida, Date volta, String username) {
         Session session = sessionFactory.getCurrentSession();
 
         int orderNum = this.getMaxOrderNum() + 1;
@@ -51,8 +51,8 @@ public class ProductOrderDaoImpl implements ProductOrderDao {
         Order order = new Order();
         order.setOrderNum(orderNum);
         order.setOrderDate(new Date());
-        order.setGoDate(x);
-        order.setBackDate(x2);
+        order.setGoDate(ida);
+        order.setBackDate(volta);
         order.setAmount(quantity * (product.getPrice()));
         order.setQuantity(quantity);
         order.setAccount(account);

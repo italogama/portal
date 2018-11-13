@@ -24,7 +24,7 @@ public class ExceptionController {
 	@ExceptionHandler(ProductOutOfStockException.class)
 	public String productOutOfStock(ProductOutOfStockException ex)
 	{
-		return "viagens/outOfStock";
+		return "outOfStock";
 	}
 	
 	@ExceptionHandler(NoOrderFoundException.class)

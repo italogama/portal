@@ -54,7 +54,7 @@ public class Product implements Serializable{
 		this.quantity = quantity;
 	}
 	
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "product_type_id", nullable = false )
 	public ProductType getProductType() {
 		return productType;

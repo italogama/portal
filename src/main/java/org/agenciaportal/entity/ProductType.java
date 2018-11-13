@@ -19,9 +19,9 @@ public class ProductType implements Serializable{
 	@Id
 	@Column(name="id")
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long id;
-	private String description;
-	private String alias;
+	public Long id;
+	public String description;
+	public String alias;
 	
 	public Long getId() {
 		return id;

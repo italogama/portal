@@ -4,13 +4,12 @@
  <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <!DOCTYPE html>
 <t:template name="${pageContext.request.userPrincipal.name}" isAdmin="${isAdmin}">
-<html>
-<body>
    <table border="1" style="width:100%" class="table table-bordered">
    	   <thead>
         <tr>
            <th>Nº Pedido</th>
            <th>Nome pedido</th>
+           <th>Tipo:</th>
            <th>Data Ida</th>
            <th>Data Volta</th>
            <th>Preço pedido</th>
@@ -23,6 +22,7 @@
            <tr>
                <td>${order.orderNum}</td>
                <td>${order.product.name}</td>
+               <td>${order.product.productType.description}</td>
                <td>
                   <fmt:formatDate value="${order.goDate}" pattern="dd-MM-yyyy"/>
                </td>
@@ -31,7 +31,7 @@
                </td>
                <td> <fmt:formatNumber value="${order.product.price}" type="currency"/></td>
                <td>
-                  <fmt:formatDate value="${order.orderDate}" pattern="dd-MM-yyyy HH:mm"/>
+                  <fmt:formatDate value="${order.orderDate}" pattern="dd/MM/yyyy"/>
                </td>
                <td>${order.quantity}</td>
                <td style="color:red;">
@@ -40,6 +40,4 @@
            </tr>
        </c:forEach>
    </table>
-</body>
-</html>
 </t:template>

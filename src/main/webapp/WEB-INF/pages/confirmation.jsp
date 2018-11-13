@@ -13,6 +13,7 @@
 	      <input type="hidden" name="code" value="${product.code}"/>
 	      <ul>
 	          <li>Nome: ${product.name}</li>
+<%-- 	          <li>Tipo: ${product.producttype}</li> --%>
 	          <li>Preço: <fmt:formatNumber value="${product.price}" type="currency"/></li>
 	          <li>Quantidade:<input type="number" min="1" max="${product.quantity}" value="1" step="1" name="quantity" onfocus="this.blur();"/></li>
 	          <li>Data Ida:<input type="text" name="goDate" class="form-control" data-inputmask="'mask': '99/99/9999'"></li>
@@ -20,7 +21,7 @@
 	          <li>Data Volta:<input type="text" name="backDate" class="form-control" data-inputmask="'mask': '99/99/9999'"></li>
 	      </ul>
 	      <input class="btn btn-success" type="submit" value="Comprar"/>
-	      <a type="button" class="btn btn-danger" href="${pageContext.request.contextPath}/viagensList">Cancelar</a>
+	      <button type="button" class="btn btn-danger" onclick="window.history.back()">Cancelar</button>
 	      </form>
 	  </div>
 	</body>
