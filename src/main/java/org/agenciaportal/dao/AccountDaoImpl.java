@@ -1,14 +1,16 @@
 package org.agenciaportal.dao;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
+import org.agenciaportal.entity.Account;
+import org.agenciaportal.entity.Product;
+import org.agenciaportal.entity.Role;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
-import org.agenciaportal.entity.Account;
-import org.agenciaportal.entity.Role;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Repository;
@@ -43,5 +45,12 @@ public class AccountDaoImpl implements AccountDao{
 		 account.setActive(true);
 		 account.setPassword(bCryptPasswordEncoder.encode(account.getPassword()));
 		 session.save(account);
+	}
+	
+	@Override
+	public List <Account> listUsers() {
+		Session session = sessionFactory.getCurrentSession();
+        Criteria crit = session.createCriteria(Account.class);
+        return crit.list();
 	}
 }

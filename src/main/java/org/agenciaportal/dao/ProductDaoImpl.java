@@ -46,7 +46,7 @@ public class ProductDaoImpl implements ProductDao {
 		}
 
 		@Override
-		public List <Product> listarProdutosAdm() {
+		public List <Product> listProducts() {
 			Session session = sessionFactory.getCurrentSession();
 	        Criteria crit = session.createCriteria(Product.class);
 	        return crit.list();

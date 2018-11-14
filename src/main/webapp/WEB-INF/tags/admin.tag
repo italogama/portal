@@ -1,6 +1,13 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 
+<%@ attribute name="name" %>
+<%@ attribute name="isAdmin" type="java.lang.Boolean" %>
+
+<% 
+if(name == null || name == "") name = "Visitante";
+%>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -37,6 +44,7 @@
                                 <img src="<c:url value="/static/images/img.jpg" />" class="nav-avatar" />
                                 <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
+                                	<li><a>Logado como: <%= name %></a>
                                     <li><a href="#">Perfil</a></li>
                                     <li><a href="#">Editar Perfil</a></li>
                                     <li><a href="#">Configurações</a></li>
@@ -58,11 +66,11 @@
                     <div class="span3">
                         <div class="sidebar">
                             <ul class="widget widget-menu unstyled">
-                                <li class="active"><a href="AgenciaPortal/homeadmin"><i class="menu-icon icon-dashboard"></i>Resumo
+                                <li class="active"><a href="./homeadmin"><i class="menu-icon icon-dashboard"></i>Resumo
                                 </a></li>
-                                <li><a href="activity.html"><i class="menu-icon icon-bullhorn"></i>News Feed </a>
+                                <li><a href="./usersAdm"><i class="menu-icon icon-user"></i>Usuários </a>
                                 </li>
-                                <li><a href="message.html"><i class="menu-icon icon-inbox"></i>Inbox <b class="label green pull-right">
+                                <li><a href="message.html"><i class="fas fa-umbrella-beach"></i>Inbox <b class="label green pull-right">
                                     11</b> </a></li>
                                 <li><a href="task.html"><i class="menu-icon icon-tasks"></i>Tasks <b class="label orange pull-right">
                                     19</b> </a></li>
