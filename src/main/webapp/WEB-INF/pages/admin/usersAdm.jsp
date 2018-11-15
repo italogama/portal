@@ -7,36 +7,24 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 
 <t:admin name="${pageContext.request.userPrincipal.name}" isAdmin="${isAdmin}">
-	<c:forEach items="${ListUsers}" var="usersInfo">
 	<table class="table table-striped table-bordered table-condensed">
 		<thead>
 			<tr>
 				<th># ID</th>
 				<th>Ativo</th>
-				<th>Last Name</th>
-				<th>Username</th>
+				<th>Usuario</th>
+				<th>Senha</th>
 			</tr>
 		</thead>
+	<c:forEach items="${ListUsers}" var="usersInfo">
 		<tbody>
 			<tr>
-				<td>1</td>
-				<td>Mark</td>
-				<td>Otto</td>
-				<td>@mdo</td>
-			</tr>
-			<tr>
-				<td>2</td>
-				<td>Jacob</td>
-				<td>Thornton</td>
-				<td>@fat</td>
-			</tr>
-			<tr>
-				<td>3</td>
-				<td>Larry</td>
-				<td>the Bird</td>
-				<td>@twitter</td>
+				<td>${usersInfo.userId}</td>
+				<td>${usersInfo.active}</td>
+				<td>${usersInfo.userName}</td>
+				<td>${usersInfo.password}</td>
 			</tr>
 		</tbody>
-	</table>
 	</c:forEach>
+	</table>
 </t:admin>
