@@ -11,9 +11,10 @@
 	      <h3>Informação do Produto:</h3>
 	      <form action="${pageContext.request.contextPath}/purchase" method="post">
 	      <input type="hidden" name="code" value="${product.code}"/>
+	      <input type="hidden" name="type" value="${product.productType.id}"/>
 	      <ul>
 	          <li>Nome: ${product.name}</li>
-<%-- 	          <li>Tipo: ${product.producttype}</li> --%>
+	          <li>Tipo: ${product.productType.description}</li>
 	          <li>Preço: <fmt:formatNumber value="${product.price}" type="currency"/></li>
 	          <li>Quantidade:<input type="number" min="1" max="${product.quantity}" value="1" step="1" name="quantity" onfocus="this.blur();"/></li>
 	          <li>Data Ida:<input type="text" name="goDate" class="form-control" data-inputmask="'mask': '99/99/9999'"></li>

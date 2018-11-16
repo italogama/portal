@@ -14,10 +14,10 @@ if(name == null || name == "") name = "Visitante";
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link type="text/css" href="<c:url value="static/admin/bootstrap/css/bootstrap.min.css" />" rel="stylesheet">
-        <link type="text/css" href="<c:url value="static/admin/bootstrap/css/bootstrap-responsive.min.css" />" rel="stylesheet">
-        <link type="text/css" href="<c:url value="static/admin/css/theme.css" />" rel="stylesheet">
-        <link type="text/css" href="<c:url value="static/admin/images/icons/css/font-awesome.css" />" rel="stylesheet">
+        <link type="text/css" href="<c:url value="../static/admin/bootstrap/css/bootstrap.min.css" />" rel="stylesheet">
+        <link type="text/css" href="<c:url value="../static/admin/bootstrap/css/bootstrap-responsive.min.css" />" rel="stylesheet">
+        <link type="text/css" href="<c:url value="../static/admin/css/theme.css" />" rel="stylesheet">
+        <link type="text/css" href="<c:url value="../static/admin/images/icons/css/font-awesome.css" />" rel="stylesheet">
         <link type="text/css" href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600'
             rel='stylesheet'>
     </head>
@@ -66,6 +66,8 @@ if(name == null || name == "") name = "Visitante";
                     <div class="span3">
                         <div class="sidebar">
                             <ul class="widget widget-menu unstyled">
+                                <li class="active"><a href="../home"><i class="menu-icon icon-home"></i>Home
+                                </a></li>
                                 <li class="active"><a href="./homeadmin"><i class="menu-icon icon-dashboard"></i>Resumo
                                 </a></li>
                                 <li><a href="./usersAdm"><i class="menu-icon icon-user"></i>Usuários </a>
@@ -79,23 +81,14 @@ if(name == null || name == "") name = "Visitante";
                             
                             
                             <ul class="widget widget-menu unstyled">
-                                <li><a href="ui-button-icon.html"><i class="menu-icon icon-bold"></i> Buttons </a></li>
-                                <li><a href="ui-typography.html"><i class="menu-icon icon-book"></i>Typography </a></li>
-                                <li><a href="form.html"><i class="menu-icon icon-paste"></i>Forms </a></li>
+                                <li><a href="./passagens"><i class="menu-icon icon-plane"></i> Passagens </a></li>
+                                <li><a href="./resort"><i class="menu-icon icon-book"></i>Resorts </a></li>
+                                <li><a href="./cruzeiro"><i class="menu-icon icon-anchor"></i>Cruzeiros </a></li>
                                 <li><a href="table.html"><i class="menu-icon icon-table"></i>Tables </a></li>
                                 <li><a href="charts.html"><i class="menu-icon icon-bar-chart"></i>Charts </a></li>
                             </ul>
                             <!--/.widget-nav-->
                             <ul class="widget widget-menu unstyled">
-                                <li><a class="collapsed" data-toggle="collapse" href="#togglePages"><i class="menu-icon icon-cog">
-                                </i><i class="icon-chevron-down pull-right"></i><i class="icon-chevron-up pull-right">
-                                </i>More Pages </a>
-                                    <ul id="togglePages" class="collapse unstyled">
-                                        <li><a href="other-login.html"><i class="icon-inbox"></i>Login </a></li>
-                                        <li><a href="other-user-profile.html"><i class="icon-inbox"></i>Profile </a></li>
-                                        <li><a href="other-user-listing.html"><i class="icon-inbox"></i>All Users </a></li>
-                                    </ul>
-                                </li>
                                 <li><a href="/AgenciaPortal/logout"><i class="menu-icon icon-signout"></i>Deslogar </a></li>
                             </ul>
                         </div>
@@ -119,12 +112,12 @@ if(name == null || name == "") name = "Visitante";
                 <b class="copyright">&copy; ©2018 Agência - Portal </b>Todos os direitos reservados.
             </div>
         </div>
-        <script src="<c:url value="static/admin/scripts/jquery-1.9.1.min.js" />" type="text/javascript"></script>
-        <script src="<c:url value="static/admin/scripts/jquery-ui-1.10.1.custom.min.js" />" type="text/javascript"></script>
-        <script src="<c:url value="static/admin/bootstrap/js/bootstrap.min.js" />" type="text/javascript"></script>
-        <script src="<c:url value="static/admin/scripts/flot/jquery.flot.js" />" type="text/javascript"></script>
-        <script src="<c:url value="static/admin/scripts/flot/jquery.flot.resize.js" />" type="text/javascript"></script>
-        <script src="<c:url value="static/admin/scripts/datatables/jquery.dataTables.js" />" type="text/javascript"></script>
-        <script src="<c:url value="static/admin/scripts/common.js" />" type="text/javascript"></script>
+        <script src="<c:url value="../static/admin/scripts/jquery-1.9.1.min.js" />" type="text/javascript"></script>
+        <script src="<c:url value="../static/admin/scripts/jquery-ui-1.10.1.custom.min.js" />" type="text/javascript"></script>
+        <script src="<c:url value="../static/admin/bootstrap/js/bootstrap.min.js" />" type="text/javascript"></script>
+        <script src="<c:url value="../static/admin/scripts/flot/jquery.flot.js" />" type="text/javascript"></script>
+        <script src="<c:url value="../static/admin/scripts/flot/jquery.flot.resize.js" />" type="text/javascript"></script>
+        <script src="<c:url value="../static/admin/scripts/datatables/jquery.dataTables.js" />" type="text/javascript"></script>
+        <script src="<c:url value="../static/admin/scripts/common.js" />" type="text/javascript"></script>
       
     </body>

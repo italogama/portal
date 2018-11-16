@@ -10,5 +10,7 @@ public interface ProductOrderDao {
 	 
     public List<Order> getOrdersByUserName(String username);
 
+	public List<Order> listOrders();
+
     
 }

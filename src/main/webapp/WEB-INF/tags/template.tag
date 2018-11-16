@@ -128,7 +128,7 @@ if(name == null || name == "") name = "Visitante";
                   <ul class="dropdown-menu dropdown-usermenu pull-right">
                   	 <% if(isAdmin) { %>
                     <li>
-                      <a href="/AgenciaPortal/homeadmin">
+                      <a href="/AgenciaPortal/admin/homeadmin">
                         <span class="badge bg-red pull-right">ONLY ADMIN</span>
                         <span>Administrativo</span>
                       </a>

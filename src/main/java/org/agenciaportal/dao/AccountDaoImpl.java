@@ -53,4 +53,5 @@ public class AccountDaoImpl implements AccountDao{
         Criteria crit = session.createCriteria(Account.class);
         return crit.list();
 	}
+	
 }

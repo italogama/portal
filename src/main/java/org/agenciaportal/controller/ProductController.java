@@ -98,7 +98,7 @@ public class ProductController {
     	Date ida = new Date(godate);
     	Date volta = new Date(backdate);
     	
-    	Order order = viagemOrderDAO.saveOrder(code,productType, quantity, ida, volta, securityService.findLoggedInUsername());
+    	Order order = viagemOrderDAO.saveOrder(code, productType, quantity, ida, volta, securityService.findLoggedInUsername());
     	model.addAttribute("order",order);
     	 if(logger.isInfoEnabled())
     	        logger.info("Product purchased having code "+code+", quantity "+quantity);
@@ -111,6 +111,7 @@ public class ProductController {
     	if(list.isEmpty())
     		throw new NoOrderFoundException();
     	model.addAttribute("list",list);
+    	model.addAttribute("isAdmin", request.isUserInRole("ADMIN"));
         return "/ultimasViagens";
     }
 

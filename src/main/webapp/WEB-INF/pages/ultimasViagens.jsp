@@ -22,7 +22,7 @@
            <tr>
                <td>${order.orderNum}</td>
                <td>${order.product.name}</td>
-               <td>${order.product.productType.description}</td>
+               <td>${order.product.productType.id}</td>
                <td>
                   <fmt:formatDate value="${order.goDate}" pattern="dd-MM-yyyy"/>
                </td>

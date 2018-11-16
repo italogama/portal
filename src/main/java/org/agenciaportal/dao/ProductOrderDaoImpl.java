@@ -40,7 +40,7 @@ public class ProductOrderDaoImpl implements ProductOrderDao {
     }
  
     @Override
-    public Order saveOrder(String code, String type,int quantity, Date ida, Date volta, String username) {
+    public Order saveOrder(String code, String productType,int quantity, Date ida, Date volta, String username) {
         Session session = sessionFactory.getCurrentSession();
 
         int orderNum = this.getMaxOrderNum() + 1;
@@ -95,6 +95,13 @@ public class ProductOrderDaoImpl implements ProductOrderDao {
         List<Order> list = (List<Order>) crit.list();
         /*list.forEach(Order::getProduct);*/
 		return list;
+	}
+	
+	@Override
+	public List <Order> listOrders() {
+		Session session = sessionFactory.getCurrentSession();
+        Criteria crit = session.createCriteria(Account.class);
+        return crit.list();
 	}
  
    
