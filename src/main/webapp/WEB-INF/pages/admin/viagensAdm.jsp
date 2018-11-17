@@ -8,16 +8,6 @@
 
 <t:admin name="${pageContext.request.userPrincipal.name}" isAdmin="${isAdmin}">
 <body>
-<%-- 	  <c:forEach items="${list}" var="prodInfo"> --%>
-<!-- 	      <div class="product-preview-container"> -->
-<!-- 	          <ul> -->
-<%-- 	              <li>Nome: ${prodInfo.name}</li> --%>
-<%-- 	              <li>Preço: <fmt:formatNumber value="${prodInfo.price}" type="currency"/></li> --%>
-<%-- 	              <li><a href="${pageContext.request.contextPath}/buyProduct?code=${prodInfo.code}"> Comprar</a></li>    --%>
-<!-- 	          </ul> -->
-<!-- 	      </div> -->
-<%-- 	  </c:forEach> --%>
-<!--    <br/> -->
    <table class="table table-striped table-bordered table-condensed">
 		<thead>
 			<tr>
@@ -40,5 +30,4 @@
 		</tbody>
 	</c:forEach>
 	</table>
-</body>
 </t:admin>

@@ -15,9 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 @Controller
-// Enable Hibernate Transaction.
 @Transactional
-// Need to use RedirectAttributes
 @EnableWebMvc
 public class AdminController {
 
@@ -33,7 +31,7 @@ public class AdminController {
 	@Autowired
 	private ProductOrderDao productOrderDao;
 	
-
+	// HOME PAGE ADMIN
 	@RequestMapping({ "admin/homeadmin" })
 	public String adminHandler(HttpServletRequest request, Model model) {
 		model.addAttribute("isAdmin", request.isUserInRole("ADMIN"));
@@ -44,6 +42,7 @@ public class AdminController {
 		return "admin/homeadmin";
 	}
 	
+	// Users ADM LIST
 	@RequestMapping({ "admin/usersAdm" })
 	public String adminUsers(HttpServletRequest request, Model model) {
 		model.addAttribute("isAdmin", request.isUserInRole("ADMIN"));
@@ -52,17 +51,28 @@ public class AdminController {
 		return "admin/usersAdm";
 	}
 
-//	 // Product List page.
-//    @RequestMapping({ "/viagensAdmList" })
-//    public String listViagensHandler(Model model) {
-//        model.addAttribute("produtosList", viagensDAO.listProducts());
-//        return "admin/viagensAdmList";
-//    }
+	 // TODAS Viagens List page.
+    @RequestMapping({ "admin/viagensAdm" })
+    public String listViagensHandler(HttpServletRequest request, Model model) {
+    	model.addAttribute("isAdmin", request.isUserInRole("ADMIN"));
+        model.addAttribute("list", viagensDAO.listProducts());
+        return "admin/viagensAdm";
+    }
     
+    
+    // Viagens List POR ALIAS
     @RequestMapping({ "admin/{alias}" })
     public String listViagensAdm(Model model, @PathVariable("alias") String alias) {
         model.addAttribute("list",viagensDAO.getAllProductsByAlias(alias));
         model.addAttribute("productType", productTypeDao.getByAlias(alias));
-        return "admin/viagensAdmList";
+        return "admin/viagensAdm";
+    }
+    
+    // Pedidos List POR ALIAS
+    @RequestMapping({ "admin/pedidosAdm" })
+    public String listViagensAdm(HttpServletRequest request, Model model) {
+    	model.addAttribute("isAdmin", request.isUserInRole("ADMIN"));
+        model.addAttribute("listOrder", productOrderDao.listOrders());
+        return "admin/pedidosAdm";
     }
 }

@@ -9,7 +9,7 @@
 <t:admin name="${pageContext.request.userPrincipal.name}" isAdmin="${isAdmin}">
 	<div class="btn-controls">
 		<div class="btn-box-row row-fluid">
-			<a href="#" class="btn-box big span4"><i class=" icon-random"></i><b>${qtdProducts}</b><p class="text-muted">Produtos Cadastrados</p> </a>
+			<a href="#" class="btn-box big span4"><i class=" icon-random"></i><b>${qtdProducts}</b><p class="text-muted">Pacotes Cadastrados</p> </a>
 			<a href="./usersAdm" class="btn-box big span4"><i class="icon-group"></i><b>${qtdUsers}</b><p class="text-muted">Usuários Cadastrados</p> </a>
 			<a href="#" class="btn-box big span4"><i class="icon-ok-sign"></i><b>${qtdOrders}</b><p class="text-muted">Pedidos Realizados</p> </a>
 		</div>

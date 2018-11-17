@@ -47,16 +47,18 @@ public class ProductController {
 	
 	// Product List page.
     @RequestMapping({ "/viagensList/{typeId}" })
-    public String listViagensHandler(Model model, @PathVariable("typeId") Long typeId) {
+    public String listViagensHandler(HttpServletRequest request, Model model, @PathVariable("typeId") Long typeId) {
         model.addAttribute("list",viagensDAO.getAllProductsByType(typeId));
+        model.addAttribute("isAdmin", request.isUserInRole("ADMIN"));
         return "/viagensList";
     }
     
     // Product List page.
     @RequestMapping({ "/viagens/{alias}" })
-    public String listViagensHandler(Model model, @PathVariable("alias") String alias) {
+    public String listViagensHandler(HttpServletRequest request, Model model, @PathVariable("alias") String alias) {
         model.addAttribute("list",viagensDAO.getAllProductsByAlias(alias));
         model.addAttribute("productType", productTypeDao.getByAlias(alias));
+        model.addAttribute("isAdmin", request.isUserInRole("ADMIN"));
         return "/viagensList";
     }
     
@@ -81,6 +83,7 @@ public class ProductController {
         	}
         	model.addAttribute("product",product);
         }
+        model.addAttribute("isAdmin", request.isUserInRole("ADMIN"));
         return "/confirmation";
     }
     
@@ -102,6 +105,7 @@ public class ProductController {
     	model.addAttribute("order",order);
     	 if(logger.isInfoEnabled())
     	        logger.info("Product purchased having code "+code+", quantity "+quantity);
+    	model.addAttribute("isAdmin", request.isUserInRole("ADMIN"));
         return "/orderDetail";
     }
     

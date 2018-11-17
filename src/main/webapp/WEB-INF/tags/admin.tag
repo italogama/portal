@@ -29,16 +29,6 @@ if(name == null || name == "") name = "Visitante";
                         <i class="icon-reorder shaded"></i></a><a class="brand" href="index.html">Agência ADMIN </a>
                     <div class="nav-collapse collapse navbar-inverse-collapse">
                         <ul class="nav pull-right">
-                            <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown
-                                <b class="caret"></b></a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="#">Item No. 1</a></li>
-                                    <li><a href="#">Don't Click</a></li>
-                                    <li class="divider"></li>
-                                    <li class="nav-header">Example Header</li>
-                                    <li><a href="#">A Separated link</a></li>
-                                </ul>
-                            </li>
                             <li><a href="#">Support </a></li>
                             <li class="nav-user dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 <img src="<c:url value="/static/images/img.jpg" />" class="nav-avatar" />
@@ -70,22 +60,16 @@ if(name == null || name == "") name = "Visitante";
                                 </a></li>
                                 <li class="active"><a href="./homeadmin"><i class="menu-icon icon-dashboard"></i>Resumo
                                 </a></li>
-                                <li><a href="./usersAdm"><i class="menu-icon icon-user"></i>Usuários </a>
-                                </li>
-                                <li><a href="message.html"><i class="fas fa-umbrella-beach"></i>Inbox <b class="label green pull-right">
-                                    11</b> </a></li>
-                                <li><a href="task.html"><i class="menu-icon icon-tasks"></i>Tasks <b class="label orange pull-right">
-                                    19</b> </a></li>
+                                <li><a href="./usersAdm"><i class="menu-icon icon-user"></i>Usuários </a></li>
+                                <li><a href="./viagensAdm"><i class="menu-icon icon-random"></i>Pacotes</a></li>
+                                <li><a href="./pedidosAdm"><i class="menu-icon icon-ok-sign"></i>Pedidos</a></li>
                             </ul>
                             <!--/.widget-nav-->
-                            
                             
                             <ul class="widget widget-menu unstyled">
                                 <li><a href="./passagens"><i class="menu-icon icon-plane"></i> Passagens </a></li>
                                 <li><a href="./resort"><i class="menu-icon icon-book"></i>Resorts </a></li>
                                 <li><a href="./cruzeiro"><i class="menu-icon icon-anchor"></i>Cruzeiros </a></li>
-                                <li><a href="table.html"><i class="menu-icon icon-table"></i>Tables </a></li>
-                                <li><a href="charts.html"><i class="menu-icon icon-bar-chart"></i>Charts </a></li>
                             </ul>
                             <!--/.widget-nav-->
                             <ul class="widget widget-menu unstyled">
@@ -95,11 +79,11 @@ if(name == null || name == "") name = "Visitante";
                         <!--/.sidebar-->
                     </div>
                     <!--/.span3-->
+					<!-- CONTEUDO PAGE -->
                     <div class="span9">
                         <div class="content">
                         	<jsp:doBody/>
                         </div>
-                        <!--/.content-->
                     </div>
                     <!--/.span9-->
                 </div>
