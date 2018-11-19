@@ -22,7 +22,7 @@
 	           	<th>Valor</th>
        		</tr>
 		</thead>
-	<c:forEach items="${listOrder}" var="prodInfo">
+	<c:forEach items="${listOrder}" var="order">
 		<tbody>
 			<tr>
 				<td>${order.orderNum}</td>

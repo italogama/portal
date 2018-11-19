@@ -100,7 +100,7 @@ public class ProductOrderDaoImpl implements ProductOrderDao {
 	@Override
 	public List <Order> listOrders() {
 		Session session = sessionFactory.getCurrentSession();
-        Criteria crit = session.createCriteria(Account.class);
+        Criteria crit = session.createCriteria(Order.class);
         return crit.list();
 	}
  

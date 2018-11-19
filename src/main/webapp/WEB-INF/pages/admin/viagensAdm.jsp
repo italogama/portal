@@ -16,6 +16,8 @@
 				<th>Preço</th>
 				<th>Quantidade</th>
 				<th>Tipo</th>
+				<th>Editar</th>
+				<th>Excluir</th>
 			</tr>
 		</thead>
 	<c:forEach items="${list}" var="prodInfo">
@@ -26,6 +28,8 @@
 				<td>${prodInfo.price}</td>
 				<td>${prodInfo.quantity}</td>
 				<td>${prodInfo.productType.description}</td>
+				<td><button type="button" class="btn btn-warning">Editar</button></td>
+				<td><button type="button" class="btn btn-danger">Excluir</button></td>
 			</tr>
 		</tbody>
 	</c:forEach>
