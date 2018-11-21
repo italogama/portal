@@ -12,14 +12,50 @@ if(name == null || name == "") name = "Visitante";
 <html lang="en">
 <head>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link type="text/css" href="<c:url value="../static/admin/bootstrap/css/bootstrap.min.css" />" rel="stylesheet">
-        <link type="text/css" href="<c:url value="../static/admin/bootstrap/css/bootstrap-responsive.min.css" />" rel="stylesheet">
-        <link type="text/css" href="<c:url value="../static/admin/css/theme.css" />" rel="stylesheet">
-        <link type="text/css" href="<c:url value="../static/admin/images/icons/css/font-awesome.css" />" rel="stylesheet">
-        <link type="text/css" href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600'
+    	 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    	<!-- Meta, title, CSS, favicons, etc. -->
+    	<meta charset="utf-8">
+    	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    	<meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    
+        <link rel="stylesheet" href="<c:url value="/static/admin/bootstrap/css/bootstrap.min.css" />" rel="stylesheet">
+        <link rel="stylesheet" href="<c:url value="/static/admin/bootstrap/css/bootstrap-responsive.min.css" />" rel="stylesheet">
+        <link rel="stylesheet" href="<c:url value="/static/admin/css/theme.css" />" rel="stylesheet">
+        <link rel="stylesheet" href="<c:url value="/static/admin/images/icons/css/font-awesome.css" />" rel="stylesheet">
+        <link rel="stylesheet" href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600'
             rel='stylesheet'>
+        <script src="<c:url value="/static/vendors/jquery/dist/jquery.min.js"/>"></script>
+        <script>
+        $(document).ready( function() {  // or shorthand of $( function () { 
+		    	carregaMenu = function() {
+	    		
+	    	
+		    		$.ajax({
+		    			url: window.location.origin+'/AgenciaPortal/menu', 
+		    			type: 'GET',
+		    			dataType: 'json',
+		    			success: function(resposta) {
+				    		if (resposta) {
+				    		 $('#menu_principal').html('');
+			    		 
+				    		 for (var i=0; i<resposta.length; i++) {
+				    			 $('#menu_principal').append('<li><a href="'+resposta[i].alias.toLowerCase()+'">'+resposta[i].description+'</a></li>');
+				    		 }
+		    		
+				    		}
+		    			}, 
+		    			error: function(err) {
+		    				console.log(err);
+		    			}
+	    			
+		    		});
+	    		
+		    	};
+	    	
+		    	carregaMenu();
+		});
+        </script>
     </head>
     <body>
         <div class="navbar navbar-fixed-top">
@@ -66,10 +102,7 @@ if(name == null || name == "") name = "Visitante";
                             </ul>
                             <!--/.widget-nav-->
                             
-                            <ul class="widget widget-menu unstyled">
-                                <li><a href="./passagens"><i class="menu-icon icon-plane"></i> Passagens </a></li>
-                                <li><a href="./resort"><i class="menu-icon icon-book"></i>Resorts </a></li>
-                                <li><a href="./cruzeiro"><i class="menu-icon icon-anchor"></i>Cruzeiros </a></li>
+                            <ul class="widget widget-menu unstyled" id="menu_principal">
                             </ul>
                             <!--/.widget-nav-->
                             <ul class="widget widget-menu unstyled">
@@ -96,12 +129,12 @@ if(name == null || name == "") name = "Visitante";
                 <b class="copyright">&copy; ©2018 Agência - Portal </b>Todos os direitos reservados.
             </div>
         </div>
-        <script src="<c:url value="../static/admin/scripts/jquery-1.9.1.min.js" />" type="text/javascript"></script>
-        <script src="<c:url value="../static/admin/scripts/jquery-ui-1.10.1.custom.min.js" />" type="text/javascript"></script>
-        <script src="<c:url value="../static/admin/bootstrap/js/bootstrap.min.js" />" type="text/javascript"></script>
-        <script src="<c:url value="../static/admin/scripts/flot/jquery.flot.js" />" type="text/javascript"></script>
-        <script src="<c:url value="../static/admin/scripts/flot/jquery.flot.resize.js" />" type="text/javascript"></script>
-        <script src="<c:url value="../static/admin/scripts/datatables/jquery.dataTables.js" />" type="text/javascript"></script>
-        <script src="<c:url value="../static/admin/scripts/common.js" />" type="text/javascript"></script>
-      
+        <script src="<c:url value="/static/vendors/jquery/dist/jquery.min.js"/>"></script>
+        <script src="<c:url value="/static/admin/scripts/jquery-ui-1.10.1.custom.min.js" />" type="text/javascript"></script>
+        <script src="<c:url value="/static/admin/bootstrap/js/bootstrap.min.js" />" type="text/javascript"></script>
+        <script src="<c:url value="/static/admin/scripts/flot/jquery.flot.js" />" type="text/javascript"></script>
+        <script src="<c:url value="/static/admin/scripts/flot/jquery.flot.resize.js" />" type="text/javascript"></script>
+        <script src="<c:url value="/static/admin/scripts/datatables/jquery.dataTables.js" />" type="text/javascript"></script>
+        <script src="<c:url value="/static/admin/scripts/common.js" />" type="text/javascript"></script>
+        <script src="<c:url value="/static/build/js/custom.min.js" />"></script>
     </body>

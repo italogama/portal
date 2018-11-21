@@ -19,6 +19,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -43,7 +44,8 @@ public class ProductController {
 	@Autowired
     private ProductOrderDao orderDAO;
 	@Autowired
-	private ProductTypeDao productTypeDao;  
+	private ProductTypeDao productTypeDao; 
+	
 	
 	// Product List page.
     @RequestMapping({ "/viagensList/{typeId}" })
@@ -90,7 +92,7 @@ public class ProductController {
     @RequestMapping(value = { "/purchase" }, method = RequestMethod.POST)
     // Avoid UnexpectedRollbackException
     @Transactional(propagation = Propagation.NEVER)
-    public String purchaseProduct(HttpServletRequest request, Model model) {
+    public String purchaseProduct(HttpServletRequest request, Model model, @Validated Product product) {
     	String code = request.getParameter("code");
     	String productType = request.getParameter("type");
     	int quantity =Integer.parseInt( request.getParameter("quantity"));
@@ -117,6 +119,20 @@ public class ProductController {
     	model.addAttribute("list",list);
     	model.addAttribute("isAdmin", request.isUserInRole("ADMIN"));
         return "/ultimasViagens";
+    }
+    
+    // Deletar pacote by CODE
+    @RequestMapping({ "admin/viagensAdm/{code}" })
+    public String deletarPacote(HttpServletRequest request, Model model, @PathVariable("code") String code) throws Exception {
+    	if (code == null){
+    		throw new Exception("Pacote não existe");
+    	}else{
+    		viagensDAO.deleteProduct(code);
+    	}
+        
+        model.addAttribute("list", viagensDAO.listProducts());
+        
+        return "redirect:/admin/viagensAdm";
     }
 
 }

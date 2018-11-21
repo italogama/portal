@@ -6,6 +6,7 @@ import org.agenciaportal.dao.AccountDao;
 import org.agenciaportal.dao.ProductDao;
 import org.agenciaportal.dao.ProductOrderDao;
 import org.agenciaportal.dao.ProductTypeDao;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
@@ -18,7 +19,9 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 @Transactional
 @EnableWebMvc
 public class AdminController {
-
+	
+	public static Logger logger = Logger.getLogger(MainController.class);
+	
 	@Autowired
     private ProductDao viagensDAO;
 	
@@ -75,4 +78,14 @@ public class AdminController {
         model.addAttribute("listOrder", productOrderDao.listOrders());
         return "admin/pedidosAdm";
     }
+    
+    @RequestMapping({ "admin/viagensAlias/{alias}" })
+    public String listarViagensByAliasAdm(HttpServletRequest request, Model model, @PathVariable("alias") String alias) {
+        model.addAttribute("list",viagensDAO.getAllProductsByAlias(alias));
+        model.addAttribute("productType", productTypeDao.getByAlias(alias));
+        model.addAttribute("isAdmin", request.isUserInRole("ADMIN"));
+        return "admin/viagensAlias";
+    }
+    
+    
 }

@@ -90,7 +90,7 @@ public class Order implements Serializable{
 	public void setProduct(Product product) {
 		this.product = product;
 	}
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "ACCOUNT_ID", nullable = false, //
     foreignKey = @ForeignKey(name = "ACCOUNT_DETAIL_ORDER_FK") )
 	public Account getAccount() {

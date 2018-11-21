@@ -4,6 +4,10 @@ import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import org.agenciaportal.entity.Role;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -22,6 +26,12 @@ public class RoleDaoImpl implements RoleDao{
 		 Criteria crit = session.createCriteria(Role.class);
 		 crit.add(Restrictions.eq("name", role));
 		 return (Role)crit.uniqueResult();
+	}
+	
+	public ArrayList<Role> findRoleAll() {
+		Session session = sessionFactory.getCurrentSession();
+		Criteria crit = session.createCriteria(Role.class);
+		return (ArrayList<Role>) crit.list();
 	}
 
 }

@@ -1,7 +1,8 @@
 package org.agenciaportal.entity;
 
 import java.io.Serializable;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -26,7 +27,7 @@ public class Account implements Serializable{
     private String password;
     private String confirmPassword;
     private boolean active;
-    private Set<Role> roles;
+    private List<Role> roles = new ArrayList<>();
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     public Long getUserId() {
@@ -46,10 +47,10 @@ public class Account implements Serializable{
     @JoinTable(name = "User_Role",
     		   joinColumns = @JoinColumn(name = "User_Id"),
     		   inverseJoinColumns = @JoinColumn(name = "Role_Id"))
-	public Set<Role> getRoles() {
+	public List<Role> getRoles() {
 		return roles;
 	}
-	public void setRoles(Set<Role> roles) {
+	public void setRoles(List<Role> roles) {
 		this.roles = roles;
 	}
 	@Column(name = "User_Name", length = 20, nullable = false)

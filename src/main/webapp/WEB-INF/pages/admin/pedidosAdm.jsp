@@ -11,12 +11,12 @@
    <table class="table table-striped table-bordered table-condensed">
 		<thead>
 			<tr>
+				<th>Usuário</th>
            		<th>Nº Pedido</th>
            		<th>Nome pedido</th>
            		<th>Tipo:</th>
 	           	<th>Data Ida</th>
 	           	<th>Data Volta</th>
-	           	<th>Preço pedido</th>
 	           	<th>Data pedido</th>
 	           	<th>Quantidade pedido</th>
 	           	<th>Valor</th>
@@ -25,16 +25,16 @@
 	<c:forEach items="${listOrder}" var="order">
 		<tbody>
 			<tr>
+				<td>${order.account.userName}</td>
 				<td>${order.orderNum}</td>
                	<td>${order.product.name}</td>
-               	<td>${order.product.productType.id}</td>
+               	<td>${order.product.productType.description}</td>
                	<td>
                   <fmt:formatDate value="${order.goDate}" pattern="dd-MM-yyyy"/>
                	</td>
                	<td>
                   <fmt:formatDate value="${order.backDate}" pattern="dd-MM-yyyy"/>
                	</td>
-               	<td> <fmt:formatNumber value="${order.product.price}" type="currency"/></td>
                	<td>
                   <fmt:formatDate value="${order.orderDate}" pattern="dd/MM/yyyy"/>
                	</td>

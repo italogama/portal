@@ -7,7 +7,6 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 
 <t:admin name="${pageContext.request.userPrincipal.name}" isAdmin="${isAdmin}">
-<body>
    <table class="table table-striped table-bordered table-condensed">
 		<thead>
 			<tr>
@@ -29,7 +28,7 @@
 				<td>${prodInfo.quantity}</td>
 				<td>${prodInfo.productType.description}</td>
 				<td><button type="button" class="btn btn-warning">Editar</button></td>
-				<td><button type="button" class="btn btn-danger">Excluir</button></td>
+				<td><a class="btn btn-danger" href="viagensAdm/${prodInfo.code}">Excluir</a></td>
 			</tr>
 		</tbody>
 	</c:forEach>

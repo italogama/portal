@@ -49,7 +49,16 @@ public class ProductDaoImpl implements ProductDao {
 		public List <Product> listProducts() {
 			Session session = sessionFactory.getCurrentSession();
 	        Criteria crit = session.createCriteria(Product.class);
-	        return crit.list();
+	        return crit.list(); 
+		}
+
+		@Override
+		public void deleteProduct(String typeId) {
+			Session session = sessionFactory.getCurrentSession();
+	        Criteria crit = session.createCriteria(Product.class);
+	        crit.add(Restrictions.eq("code", typeId));
+	       
+			session.delete((Product) crit.uniqueResult());
 		}
 
 }

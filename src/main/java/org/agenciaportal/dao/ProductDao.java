@@ -10,5 +10,6 @@ public interface ProductDao {
     public List<Product> getAllProductsByType(Long typeId);
     public List<Product> getAllProductsByAlias(String alias);
     public List<Product> listProducts();
+	void deleteProduct(String typeId);
    
 }

@@ -13,18 +13,29 @@
 				<th># ID</th>
 				<th>Ativo</th>
 				<th>Usuario</th>
-				<th>Senha</th>
+				<td>Role</td>
+				<td>Editar</td>
+				<td>Excluir</td>
 			</tr>
 		</thead>
 	<c:forEach items="${ListUsers}" var="usersInfo">
+		
 		<tbody>
 			<tr>
 				<td>${usersInfo.userId}</td>
-				<td>${usersInfo.active}</td>
+				<td>${usersInfo.active?"SIM":"NÃO"}</td>
 				<td>${usersInfo.userName}</td>
-				<td>${usersInfo.password}</td>
+				<td>
+					<c:forEach items="${usersInfo.roles}" var="rolesInfo">
+						${rolesInfo.name}
+					</c:forEach>
+				</td>
+				<td><button type="button" class="btn btn-warning">Editar</button></td>
+				<td><a class="btn btn-danger" href="usersAdm/${usersInfo.userId}">Excluir</a></td>
 			</tr>
 		</tbody>
+		
 	</c:forEach>
 	</table>
+	<td><a class="button" href="../admin/novoUsuario">Novo Usuário</a></td>
 </t:admin>

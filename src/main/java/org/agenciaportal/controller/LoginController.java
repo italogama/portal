@@ -21,7 +21,7 @@ public class LoginController {
 	
 	@RequestMapping("/403")
     public String accessDenied(HttpServletRequest request) {
-    	        logger.error("Access Denied URL ="+request.getRequestURL());
+    	        logger.error("Acesso Negado URL ="+request.getRequestURL());
         return "/403";
     }
     

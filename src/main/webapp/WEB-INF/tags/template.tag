@@ -34,6 +34,8 @@ if(name == null || name == "") name = "Visitante";
 	
     <!-- Custom Theme Style -->
     <link href="<c:url value="/static/build/css/custom.min.css" />" type="text/css" rel="stylesheet">
+    <script src="<c:url value="/static/vendors/jquery/dist/jquery.min.js"/>"></script>
+    
     
   </head>
 
@@ -77,13 +79,14 @@ if(name == null || name == "") name = "Visitante";
                   </li>
                   
                   <li><a><i class="fa fa-edit"></i> Pacotes <span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                    
+                    <ul class="nav child_menu" id="menu_principal">
+                      <!--  
                       <li><a href="AgenciaPortal/viagens/passagens">Passagens</a></li>
                       <li><a href="AgenciaPortal/viagens/resort">Resorts</a></li>
                       <li><a href="">Pacotes</a></li>
                       <li><a href="">Resorts</a></li>
                       <li><a href="">Cruzeiros</a></li>
+                      -->
                     </ul>
                   </li>
                   
@@ -227,7 +230,7 @@ if(name == null || name == "") name = "Visitante";
     </div>
 
     <!-- jQuery -->
-    <script src="<c:url value="/static/vendors/jquery/dist/jquery.min.js" />"></script>
+    <script src="<c:url value="/static/vendors/jquery/dist/jquery.min.js"/>"></script>
     <!-- Bootstrap -->
     <script src="<c:url value="/static/vendors/bootstrap/dist/js/bootstrap.min.js" />"></script>
     <!-- FastClick -->
@@ -240,11 +243,38 @@ if(name == null || name == "") name = "Visitante";
     
     <!-- Custom Theme Scripts -->
     <script src="<c:url value="/static/build/js/custom.min.js" />"></script>
-  <script type="javascript">
-  	$(document).ready(function() {
-	    alert('oi');
-	});
-  </script>
+    
+    <script>
+	    $(document).ready( function() {  // or shorthand of $( function () { 
+	 	 
+	    	carregaMenu = function() {
+	    		
+	    	
+	    		$.ajax({
+	    			url: window.location.origin+'/AgenciaPortal/menu', 
+	    			type: 'GET',
+	    			dataType: 'json',
+	    			success: function(resposta) {
+			    		if (resposta) {
+			    		 $('#menu_principal').html('');
+			    		 
+			    		 for (var i=0; i<resposta.length; i++) {
+			    			 $('#menu_principal').append('<li><a href="AgenciaPortal/viagens/'+resposta[i].alias.toLowerCase()+'">'+resposta[i].description+'</a></li>');
+			    		 }
+		    		
+			    		}
+	    			}, 
+	    			error: function(err) {
+	    				console.log(err);
+	    			}
+	    			
+	    		});
+	    		
+	    	};
+	    	
+	    	carregaMenu();
+		});
+	</script>
   </body>
   	
 </html>
