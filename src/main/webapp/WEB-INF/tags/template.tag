@@ -73,8 +73,7 @@ if(name == null || name == "") name = "Visitante";
                   <li><a><i class="fa fa-home"></i> Principal <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                     	<li><a href="AgenciaPortal/home">Index</a></li>
-                      <li><a href="AgenciaPortal/ultimasViagens">Ultimas Viagens</a></li>
-                      <li><a href="">Produtos</a></li>
+                      	<li><a href="AgenciaPortal/ultimasViagens">Ultimas Viagens</a></li>
                     </ul>
                   </li>
                   
@@ -137,9 +136,9 @@ if(name == null || name == "") name = "Visitante";
                       </a>
                     </li>
 					<% } %>
-                    <li><a href="javascript:;"> Perfil</a></li>
+                    <li><a href="/AgenciaPortal/profile"> Perfil</a></li>
                     
-                    <li><a href="javascript:;">Ajuda</a></li>
+                    <li><a href="/AgenciaPortal/ajuda">Ajuda</a></li>
                     <li><a href="/AgenciaPortal/logout"><i class="fa fa-sign-out pull-right"></i> Deslogar</a></li>
                   </ul>
                 </li>

@@ -9,36 +9,46 @@
 <t:template name="${pageContext.request.userPrincipal.name}" isAdmin="${isAdmin}">
 <html>
 <body>
- 	<h1>${productType.description}</h1>
-   <c:forEach items="${list}" var="prodInfo">
-       <div class="product-preview-container">
-           <ul>
+<%--  	<h1>${productType.description}</h1> --%>
+<%--    <c:forEach items="${list}" var="prodInfo"> --%>
+<!--        <div class="product-preview-container"> -->
+<!--            <ul> -->
          
-               <li>Nome: ${prodInfo.name}</li>
-               <li>Preço: <fmt:formatNumber value="${prodInfo.price}" type="currency"/></li>
-               <li><a
-                   href="${pageContext.request.contextPath}/buyProduct?code=${prodInfo.code}">
-                       Comprar</a></li>   
-           </ul>
-       </div>
+<%--                <li>Nome: ${prodInfo.name}</li> --%>
+<%--                <li>Preço: <fmt:formatNumber value="${prodInfo.price}" type="currency"/></li> --%>
+<!--                <li><a -->
+<%--                    href="${pageContext.request.contextPath}/buyProduct?code=${prodInfo.code}"> --%>
+<!--                        Comprar</a></li>    -->
+<!--            </ul> -->
+<!--        </div> -->
  
-   </c:forEach>
+<%--    </c:forEach> --%>
    <br/>
-  
- 
-   <%-- <c:if test="${paginationProducts.totalPages > 1}">
-       <div class="page-navigator">
-          <c:forEach items="${paginationProducts.navigationPages}" var = "page">
-              <c:if test="${page != -1 }">
-                <a href="productList?page=${page}" class="nav-item">${page}</a>
-              </c:if>
-              <c:if test="${page == -1 }">
-                <span class="nav-item"> ... </span>
-              </c:if>
-          </c:forEach>
-          
-       </div>
-   </c:if> --%>
+   <c:forEach items="${list}" var="prodInfo">
+   <div class="col-md-3 col-sm-6 col-xs-12">
+	   <div class="pricing">
+	     <div class="title">
+	       <h2>${prodInfo.name}</h2>
+	       <h1><fmt:formatNumber value="${prodInfo.price}" type="currency"/></h1>
+	       <span>${productType.description}</span>
+	     </div>
+	     <div class="x_content">
+	       <div class="">
+	         <div class="pricing_features">
+	           <ul class="list-unstyled text-left">
+	             <li><i class="fa fa-check text-success"></i>Código do produto: <strong>${prodInfo.code}</strong></li>
+	             <li><i class="fa fa-check text-success"></i>Disponível: <strong>${prodInfo.quantity}</strong></li>
+	           </ul>
+	         </div>
+	       </div>
+	       <div class="pricing_footer">
+	         <a href="${pageContext.request.contextPath}/buyProduct?code=${prodInfo.code}" class="btn btn-success btn-block" 
+	         	role="button">Comprar <span> agora</span></a>
+	       </div>
+	     </div>
+	   </div>
+	 </div>
+	 </c:forEach>
  
 </body>
 </html>

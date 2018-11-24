@@ -20,6 +20,7 @@
 	           	<th>Data pedido</th>
 	           	<th>Quantidade pedido</th>
 	           	<th>Valor</th>
+	           	<th>Excluir</th>
        		</tr>
 		</thead>
 	<c:forEach items="${listOrder}" var="order">
@@ -42,6 +43,7 @@
                	<td style="color:red;">
                   <fmt:formatNumber value="${order.amount}" type="currency"/>
                	</td>
+               	<td><a class="btn btn-danger" href="pedidosAdm/${order.id}">Excluir</a></td>
 			</tr>
 		</tbody>
 	</c:forEach>

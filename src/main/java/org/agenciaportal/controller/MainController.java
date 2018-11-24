@@ -44,4 +44,9 @@ public class MainController {
     	return new GsonBuilder().create().toJson(productDAO.list());
     }
     
+    @RequestMapping({ "/profile" })
+    public String profilePage(HttpServletRequest request, Model model) {
+    	model.addAttribute("isAdmin", request.isUserInRole("ADMIN"));
+        return "/profile";
+    }
 }

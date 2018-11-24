@@ -103,6 +103,15 @@ public class ProductOrderDaoImpl implements ProductOrderDao {
         Criteria crit = session.createCriteria(Order.class);
         return crit.list();
 	}
+
+	@Override
+	public void deleteOrder(int orderId) {
+		Session session = sessionFactory.getCurrentSession();
+        Criteria crit = session.createCriteria(Order.class);
+        crit.add(Restrictions.eq("id", orderId));
+       
+		session.delete((Order) crit.uniqueResult());
+	}
  
    
 

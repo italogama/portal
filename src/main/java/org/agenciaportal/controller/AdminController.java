@@ -53,7 +53,13 @@ public class AdminController {
 		model.addAttribute("qtdUsers", accountDAO.listUsers().size());
 		return "admin/usersAdm";
 	}
-
+	
+	 // TODAS Viagens List page.
+    @RequestMapping({ "admin/novoProduto" })
+    public String adminProduto(HttpServletRequest request, Model model) {
+        return "admin/novoProduto";
+    }
+	
 	 // TODAS Viagens List page.
     @RequestMapping({ "admin/viagensAdm" })
     public String listViagensHandler(HttpServletRequest request, Model model) {

@@ -9,6 +9,12 @@
 	<body>
 	  <div class="customer-info-container">
 	      <h3>Informação do Produto:</h3>
+	      <div>${erro}</div>
+	      <c:if test="${not empty erros}">
+	      	<c:forEach items="${erros}" var="erro">
+	      		<div>${erro}</div>
+	      	</c:forEach>
+	      </c:if>
 	      <form action="${pageContext.request.contextPath}/purchase" method="post">
 	      <input type="hidden" name="code" value="${product.code}"/>
 	      <input type="hidden" name="type" value="${product.productType.id}"/>

@@ -3,6 +3,7 @@ package org.agenciaportal.dao;
 import java.util.List;
 
 import org.agenciaportal.entity.Product;
+import org.agenciaportal.entity.ProductType;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -59,6 +60,23 @@ public class ProductDaoImpl implements ProductDao {
 	        crit.add(Restrictions.eq("code", typeId));
 	       
 			session.delete((Product) crit.uniqueResult());
+		}
+
+		@Override
+		public Product saveProduct(String code, String name, long price, int quantity, long product_type_id) {
+			Session session = sessionFactory.getCurrentSession();
+			Product p = new Product();
+			
+			p.setCode(code);
+			p.setName(name);
+			p.setPrice(price);
+			p.setQuantity(quantity);
+			ProductType pt = new ProductType();
+			pt.setId(product_type_id);
+			p.setProductType(pt);
+			session.save(p);
+			
+			return p;
 		}
 
 }

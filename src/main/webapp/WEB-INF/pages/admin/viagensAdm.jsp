@@ -33,4 +33,5 @@
 		</tbody>
 	</c:forEach>
 	</table>
+	<td><a class="button" href="../admin/novoProduto">Novo Produto</a></td>
 </t:admin>

@@ -1,6 +1,7 @@
 package org.agenciaportal.controller;
 
-import java.sql.Date;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -20,11 +21,14 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 //Enable Hibernate Transaction.
@@ -36,7 +40,7 @@ public class ProductController {
 	public static Logger logger = Logger.getLogger(MainController.class);
 	
 	@Autowired
-    private ProductDao viagensDAO;
+    private ProductDao produtoDAO;
 	@Autowired
     private ProductOrderDao viagemOrderDAO;
 	@Autowired
@@ -46,11 +50,27 @@ public class ProductController {
 	@Autowired
 	private ProductTypeDao productTypeDao; 
 	
+	@InitBinder // fazer com que o Spring reconheça o validador
+	public void myInitBinder(WebDataBinder dataBinder) {
+		
+        
+		Object target = dataBinder.getTarget();
+		if (target == null) {
+			return;
+		}
+		if (logger.isDebugEnabled())
+			logger.debug("Target =" + target);
+
+		//if (target.getClass() == Account.class)
+		//	dataBinder.setValidator(OrderValidator);
+
+	}
+	
 	
 	// Product List page.
     @RequestMapping({ "/viagensList/{typeId}" })
     public String listViagensHandler(HttpServletRequest request, Model model, @PathVariable("typeId") Long typeId) {
-        model.addAttribute("list",viagensDAO.getAllProductsByType(typeId));
+        model.addAttribute("list",produtoDAO.getAllProductsByType(typeId));
         model.addAttribute("isAdmin", request.isUserInRole("ADMIN"));
         return "/viagensList";
     }
@@ -58,7 +78,7 @@ public class ProductController {
     // Product List page.
     @RequestMapping({ "/viagens/{alias}" })
     public String listViagensHandler(HttpServletRequest request, Model model, @PathVariable("alias") String alias) {
-        model.addAttribute("list",viagensDAO.getAllProductsByAlias(alias));
+        model.addAttribute("list",produtoDAO.getAllProductsByAlias(alias));
         model.addAttribute("productType", productTypeDao.getByAlias(alias));
         model.addAttribute("isAdmin", request.isUserInRole("ADMIN"));
         return "/viagensList";
@@ -75,7 +95,7 @@ public class ProductController {
     	
         Product product = null;
         if (code != null && code.length() > 0) {
-            product = viagensDAO.findProduct(code);
+            product = produtoDAO.findProduct(code);
         }
         if (product != null) {
         	if(product.getQuantity() == 0)
@@ -92,7 +112,7 @@ public class ProductController {
     @RequestMapping(value = { "/purchase" }, method = RequestMethod.POST)
     // Avoid UnexpectedRollbackException
     @Transactional(propagation = Propagation.NEVER)
-    public String purchaseProduct(HttpServletRequest request, Model model, @Validated Product product) {
+    public String purchaseProduct(HttpServletRequest request, Model model, @Validated Product product, RedirectAttributes redirectAttributes) {
     	String code = request.getParameter("code");
     	String productType = request.getParameter("type");
     	int quantity =Integer.parseInt( request.getParameter("quantity"));
@@ -102,6 +122,21 @@ public class ProductController {
 		Long backdate = Date.parse(request.getParameter("backDate"));
     	Date ida = new Date(godate);
     	Date volta = new Date(backdate);
+    	
+    	ArrayList<String> erros = new ArrayList<>();
+    	if(ida.before(new Date())) {
+    		erros.add("Data de ida não pode ser menor que a data de hoje.");
+    	} else if(ida.after(volta)) {
+    		erros.add("Data de ida não pode ser menor que a data de volta.");
+    	}
+    	
+    	if(erros.size() > 0) {
+    		redirectAttributes.addFlashAttribute("erros", erros);
+    		redirectAttributes.addAttribute("code", product.getCode());
+    		model.addAttribute("erros", erros);
+    		model.addAttribute("product",product);
+    		return "redirect:/buyProduct";
+    	}
     	
     	Order order = viagemOrderDAO.saveOrder(code, productType, quantity, ida, volta, securityService.findLoggedInUsername());
     	model.addAttribute("order",order);
@@ -127,12 +162,38 @@ public class ProductController {
     	if (code == null){
     		throw new Exception("Pacote não existe");
     	}else{
-    		viagensDAO.deleteProduct(code);
+    		produtoDAO.deleteProduct(code);
     	}
         
-        model.addAttribute("list", viagensDAO.listProducts());
+        model.addAttribute("list", produtoDAO.listProducts());
         
         return "redirect:/admin/viagensAdm";
     }
-
+    
+    // Deletar order by CODE
+    @RequestMapping({ "admin/pedidosAdm/{id}" })
+    public String deletarPedido(HttpServletRequest request, Model model, @PathVariable("id") int orderId) throws Exception {
+    	if (orderId == 0){
+    		throw new Exception("Pedido não existe");
+    	}else{
+    		viagemOrderDAO.deleteOrder(orderId);
+    	}
+        
+        model.addAttribute("listOrder", viagemOrderDAO.listOrders());
+        
+        return "redirect:/admin/pedidosAdm";
+    }
+    
+    
+    @RequestMapping({ "admin/novoProdutoAdd" })
+    public String novoProduto(HttpServletRequest request, Model model) {
+    	
+    	
+    	produtoDAO.saveProduct(request.getParameter("code"), request.getParameter("name"), Long.parseLong(request.getParameter("price")), Integer.parseInt(request.getParameter("quantity")), Long.parseLong(request.getParameter("product_type_id")));
+        
+        model.addAttribute("listOrder", viagemOrderDAO.listOrders());
+        
+        return "/admin/novoProduto";
+    }
+    
 }
