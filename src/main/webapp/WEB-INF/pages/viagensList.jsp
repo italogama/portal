@@ -39,11 +39,12 @@
 	             <li><i class="fa fa-check text-success"></i>Código do produto: <strong>${prodInfo.code}</strong></li>
 	             <li><i class="fa fa-check text-success"></i>Disponível: <strong>${prodInfo.quantity}</strong></li>
 	           </ul>
+	           <br>
+		       <div>
+		         <a href="${pageContext.request.contextPath}/buyProduct?code=${prodInfo.code}" class="btn btn-success btn-block" 
+		         	role="button">Comprar <span> agora</span></a>
+		       </div>
 	         </div>
-	       </div>
-	       <div class="pricing_footer">
-	         <a href="${pageContext.request.contextPath}/buyProduct?code=${prodInfo.code}" class="btn btn-success btn-block" 
-	         	role="button">Comprar <span> agora</span></a>
 	       </div>
 	     </div>
 	   </div>

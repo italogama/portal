@@ -11,10 +11,15 @@
 					<div class="col-middle">
 						<div class="text-center text-center">
 							<h1 class="error-number">Obrigado pelo pedido!</h1>
-							O numero do seu pedido é: ${order.orderNum} <br> Nome :
-							${order.product.name}<br> Preço : ${order.product.price}<br>
-							Quantidade : ${order.quantity}<br> Valor Total :
-							${order.amount}<br>
+							O numero do seu pedido é: ${order.orderNum} 
+							<br> 
+							Nome : ${order.product.name}
+							<br>
+							Preço : ${order.product.price}
+							<br>
+							Quantidade : ${order.quantity}
+							<br> 
+							Valor Total : ${order.amount}<br>
 							<a type="button" class="btn btn-info" href="${pageContext.request.contextPath}/ultimasViagens">Voltar</a>
 						</div>
 					</div>

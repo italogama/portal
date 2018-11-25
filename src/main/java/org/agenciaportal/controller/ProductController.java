@@ -125,7 +125,7 @@ public class ProductController {
     	
     	ArrayList<String> erros = new ArrayList<>();
     	if(ida.before(new Date())) {
-    		erros.add("Data de ida não pode ser menor que a data de hoje.");
+    		erros.add("Data de ida não pode ser menor que a data atual.");
     	} else if(ida.after(volta)) {
     		erros.add("Data de ida não pode ser menor que a data de volta.");
     	}

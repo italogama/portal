@@ -236,13 +236,35 @@ if(name == null || name == "") name = "Visitante";
     <script src="<c:url value="/static/vendors/fastclick/lib/fastclick.js" />"></script>
     <!-- NProgress -->
     <script src="<c:url value="/static/vendors/nprogress/nprogress.js" />"></script>
-    <script src="<c:url value="/static/js/pacotes.js" />"></script>
+    <!-- bootstrap-daterangepicker -->
+    <script src="<c:url value="/static/vendors/moment/min/moment.min.js" />"></script>
+    <script src="<c:url value="/static/vendors/bootstrap-daterangepicker/daterangepicker.js" />"></script>
+    <!-- bootstrap-datetimepicker -->    
+    <script src="<c:url value="/static/vendors/bootstrap-datetimepicker/build/js/bootstrap-datepicker.min.js" />"></script>
+    <script src="<c:url value="/static/vendors/bootstrap-datetimepicker/build/js/bootstrap-datepicker.pt-BR.min.js" />"></script>
+    
+	<%--     <script src="<c:url value="/static/js/pacotes.js" />"></script> --%>
     <script src="<c:url value="/static/vendors/jquery.inputmask/dist/min/jquery.inputmask.bundle.min.js" />"></script>
     <script src="<c:url value="/static/vendors/mjolnic-bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js" />"></script>
     
     <!-- Custom Theme Scripts -->
     <script src="<c:url value="/static/build/js/custom.min.js" />"></script>
     
+    <script type="text/javascript">
+	    $('#goDate').datepicker({
+	        format: 'dd/mm/yyyy',
+	        language: 'pt-BR',
+	        startDate: '+0d'
+	    });
+    </script>
+    
+    <script type="text/javascript">
+	    $('#backDate').datepicker({
+	        format: 'dd/mm/yyyy',
+	        language: 'pt-BR',
+	        startDate: '+0d'
+	    });
+    </script>
     <script>
 	    $(document).ready( function() {  // or shorthand of $( function () { 
 	 	 

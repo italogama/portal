@@ -37,5 +37,7 @@
 		
 	</c:forEach>
 	</table>
-	<td><a class="button" href="../admin/novoUsuario">Novo Usuário</a></td>
+	<div>
+	</div>
+	<td><a class="btn btn-primary icon-plus" href="../admin/novoUsuario"> Novo Usuário </a></td>
 </t:admin>
