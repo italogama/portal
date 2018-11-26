@@ -27,7 +27,7 @@
 				<td>${prodInfo.price}</td>
 				<td>${prodInfo.quantity}</td>
 				<td>${prodInfo.productType.alias}</td>
-				<td><button type="button" class="btn btn-warning">Editar</button></td>
+				<td><a class="btn btn-warning" href="${prodInfo.code}">Editar</a></td>
 				<td><a class="btn btn-danger" href="viagensAdm/${prodInfo.code}">Excluir</a></td>
 			</tr>
 		</tbody>

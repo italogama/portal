@@ -280,7 +280,7 @@ if(name == null || name == "") name = "Visitante";
 			    		 $('#menu_principal').html('');
 			    		 
 			    		 for (var i=0; i<resposta.length; i++) {
-			    			 $('#menu_principal').append('<li><a href="AgenciaPortal/viagens/'+resposta[i].alias.toLowerCase()+'">'+resposta[i].description+'</a></li>');
+			    			 $('#menu_principal').append('<li><a href="AgenciaPortal/viagens/'+resposta[i].alias.toLowerCase()+'">'+resposta[i].alias+'</a></li>');
 			    		 }
 		    		
 			    		}

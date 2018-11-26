@@ -14,15 +14,14 @@
 
 			<div class="module">
 				<div class="module-head">
-					<h3>Novo usuario</h3>
+					<h3>Editar produto:</h3>
 				</div>
 				<div class="module-body">
-					<form action="${pageContext.request.contextPath}/admin/novoProdutoAdd" method="POST">
-						
+					<form action="${pageContext.request.contextPath}/admin/editarProduto" method="POST">
 						<div class="control-group">
-							<label class="control-label" for="basicinput">Codigo:</label>
+							<label class="control-label" for="basicinput">Código:</label>
 							<div class="controls">
-								<input name="code" type="text" class="span8" required="required" />
+								<input name="code" type="text" class="span2" readonly="readonly" required="required" value="${editarProduto.code}">
 							</div>
 						</div>
 						
@@ -50,7 +49,7 @@
 						<div class="control-group">
 							<label class="control-label" for="basicinput">Tipo do Produto:</label>
 							<div class="controls">
-								<input name="product_type_id" type="text" required="required" class="span8" />
+								<input name="product_type_id" type="text" readonly="readonly" required="required" class="span8" value="${editarProduto.productType.id}" />
 							</div>
 						</div>
 

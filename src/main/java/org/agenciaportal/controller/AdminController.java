@@ -13,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 @Controller
@@ -54,14 +55,24 @@ public class AdminController {
 		return "admin/usersAdm";
 	}
 	
+	// Exibir VIEW de cadastrar Novo Produto
     @RequestMapping({ "admin/novoProduto" })
     public String adminProduto(HttpServletRequest request, Model model) {
         return "admin/novoProduto";
     }
     
+    // Exibir VIEW de cadastrar novo tipo de produto
     @RequestMapping({ "admin/novoTipoProduto" })
     public String adminNovoTipoProduto(HttpServletRequest request, Model model) {
         return "admin/novoTipoProduto";
+    }
+    
+    @RequestMapping(value = { "admin/{code}" }, method = RequestMethod.GET)
+    public String adminEditarProduto(HttpServletRequest request, @PathVariable("code") String code, Model model) {
+    	model.addAttribute("isAdmin", request.isUserInRole("ADMIN"));
+    	model.addAttribute("editarProduto", viagensDAO.findProduct(code));
+    	
+        return "admin/editarProduto";
     }
 	
 	 // TODAS Viagens List page.

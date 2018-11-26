@@ -197,15 +197,15 @@ public class ProductController {
     }
     
     // Controller do Botão de para cadastrar novo tipo de produto
-    @RequestMapping({ "admin/novoTipoProdutoAdd" })
+    @RequestMapping({ "admin/editarProduto" })
     public String novoTipoProduto(HttpServletRequest request, Model model) {
     	
-    	
-    	produtoDAO.saveProductType(null, request.getParameter("alias"), request.getParameter("description"));
+    	produtoDAO.saveProduct(request.getParameter("code"), request.getParameter("name"), Long.parseLong(request.getParameter("price")), Integer.parseInt(request.getParameter("quantity")), Long.parseLong(request.getParameter("product_type_id")));
         
-        //model.addAttribute("listType", productTypeDao.list());
-        
-        return "/admin/viagensAdm";
+    	return "redirect:/admin/viagensAdm";
     }
+    
+    
+    
     
 }

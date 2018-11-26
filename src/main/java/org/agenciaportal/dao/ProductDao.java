@@ -19,8 +19,9 @@ public interface ProductDao {
 	void deleteProduct(String typeId);
 	
 	public Product saveProduct(String code, String name,long price,int quantity, long product_type_id);
-
+	
 	public ProductType saveProductType(Long id, String alias, String description);
+	
 
 	
    

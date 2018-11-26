@@ -2,6 +2,9 @@ package org.agenciaportal.dao;
 
 import java.util.List;
 
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaUpdate;
+
 import org.agenciaportal.entity.Product;
 import org.agenciaportal.entity.ProductType;
 import org.hibernate.Criteria;
@@ -27,6 +30,7 @@ public class ProductDaoImpl implements ProductDao {
 	       
 	        return (Product) crit.uniqueResult();
 	    }
+	    
 
 		@SuppressWarnings("unchecked")
 		@Override
@@ -74,11 +78,12 @@ public class ProductDaoImpl implements ProductDao {
 			ProductType pt = new ProductType();
 			pt.setId(product_type_id);
 			p.setProductType(pt);
-			session.save(p);
+			session.saveOrUpdate(p);
 			
 			return p;
 		}
-
+		
+		// Salvar novo tipo de produto
 		@Override
 		public ProductType saveProductType(Long id, String alias, String description) {
 			Session session = sessionFactory.getCurrentSession();
@@ -91,5 +96,18 @@ public class ProductDaoImpl implements ProductDao {
 			
 			return pt;
 		}
+
+
+//		@Override
+//		public Product updateProduct(String code, String name, long price, int quantity, long product_type_id) {
+//			
+//			Session session = sessionFactory.getCurrentSession();
+//			Criteria crit = session.createCriteria(Product.class);
+//			crit.getAlias();
+//			crit.getClass();
+//			crit.ge
+//			
+//			return null;
+//		}
 
 }
