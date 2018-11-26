@@ -40,7 +40,7 @@ if(name == null || name == "") name = "Visitante";
 				    		 $('#menu_principal').html('');
 			    		 
 				    		 for (var i=0; i<resposta.length; i++) {
-				    			 $('#menu_principal').append('<li><a href="'+resposta[i].alias.toLowerCase()+'">'+resposta[i].description+'</a></li>');
+				    			 $('#menu_principal').append('<li><a href="'+resposta[i].alias.toLowerCase()+'">'+resposta[i].alias+'</a></li>');
 				    		 }
 		    		
 				    		}
@@ -62,10 +62,9 @@ if(name == null || name == "") name = "Visitante";
             <div class="navbar-inner">
                 <div class="container">
                     <a class="btn btn-navbar" data-toggle="collapse" data-target=".navbar-inverse-collapse">
-                        <i class="icon-reorder shaded"></i></a><a class="brand" href="index.html">Agência ADMIN </a>
+                        <i class="icon-reorder shaded"></i></a><a class="brand" href="./homeadmin">Agência ADMIN </a>
                     <div class="nav-collapse collapse navbar-inverse-collapse">
                         <ul class="nav pull-right">
-                            <li><a href="#">Support </a></li>
                             <li class="nav-user dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 <img src="<c:url value="/static/images/img.jpg" />" class="nav-avatar" />
                                 <b class="caret"></b></a>

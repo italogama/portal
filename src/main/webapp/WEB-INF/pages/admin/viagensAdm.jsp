@@ -26,12 +26,16 @@
 				<td>${prodInfo.name}</td>
 				<td>${prodInfo.price}</td>
 				<td>${prodInfo.quantity}</td>
-				<td>${prodInfo.productType.description}</td>
+				<td>${prodInfo.productType.alias}</td>
 				<td><button type="button" class="btn btn-warning">Editar</button></td>
 				<td><a class="btn btn-danger" href="viagensAdm/${prodInfo.code}">Excluir</a></td>
 			</tr>
 		</tbody>
 	</c:forEach>
 	</table>
-	<td><a class="button" href="../admin/novoProduto">Novo Produto</a></td>
+	<br>
+	<div>
+		<a class="btn btn-primary icon-plus" href="../admin/novoProduto"> Novo Produto</a>
+		<a class="btn btn-primary icon-plus" href="../admin/novoTipoProduto"> Novo Tipo de Produto</a>
+	</div>
 </t:admin>

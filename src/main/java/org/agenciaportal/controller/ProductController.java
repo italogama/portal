@@ -184,7 +184,7 @@ public class ProductController {
         return "redirect:/admin/pedidosAdm";
     }
     
-    
+    // Controller do novo produto ADMIN
     @RequestMapping({ "admin/novoProdutoAdd" })
     public String novoProduto(HttpServletRequest request, Model model) {
     	
@@ -194,6 +194,18 @@ public class ProductController {
         model.addAttribute("listOrder", viagemOrderDAO.listOrders());
         
         return "/admin/novoProduto";
+    }
+    
+    // Controller do Botão de para cadastrar novo tipo de produto
+    @RequestMapping({ "admin/novoTipoProdutoAdd" })
+    public String novoTipoProduto(HttpServletRequest request, Model model) {
+    	
+    	
+    	produtoDAO.saveProductType(null, request.getParameter("alias"), request.getParameter("description"));
+        
+        //model.addAttribute("listType", productTypeDao.list());
+        
+        return "/admin/viagensAdm";
     }
     
 }

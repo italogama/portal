@@ -54,10 +54,14 @@ public class AdminController {
 		return "admin/usersAdm";
 	}
 	
-	 // TODAS Viagens List page.
     @RequestMapping({ "admin/novoProduto" })
     public String adminProduto(HttpServletRequest request, Model model) {
         return "admin/novoProduto";
+    }
+    
+    @RequestMapping({ "admin/novoTipoProduto" })
+    public String adminNovoTipoProduto(HttpServletRequest request, Model model) {
+        return "admin/novoTipoProduto";
     }
 	
 	 // TODAS Viagens List page.
@@ -83,14 +87,6 @@ public class AdminController {
     	model.addAttribute("isAdmin", request.isUserInRole("ADMIN"));
         model.addAttribute("listOrder", productOrderDao.listOrders());
         return "admin/pedidosAdm";
-    }
-    
-    @RequestMapping({ "admin/viagensAlias/{alias}" })
-    public String listarViagensByAliasAdm(HttpServletRequest request, Model model, @PathVariable("alias") String alias) {
-        model.addAttribute("list",viagensDAO.getAllProductsByAlias(alias));
-        model.addAttribute("productType", productTypeDao.getByAlias(alias));
-        model.addAttribute("isAdmin", request.isUserInRole("ADMIN"));
-        return "admin/viagensAlias";
     }
     
     

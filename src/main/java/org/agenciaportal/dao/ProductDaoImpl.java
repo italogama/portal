@@ -79,4 +79,17 @@ public class ProductDaoImpl implements ProductDao {
 			return p;
 		}
 
+		@Override
+		public ProductType saveProductType(Long id, String alias, String description) {
+			Session session = sessionFactory.getCurrentSession();
+			ProductType pt = new ProductType();
+			
+			pt.setId(id);
+			pt.setAlias(alias);
+			pt.setDescription(description);
+			session.save(pt);
+			
+			return pt;
+		}
+
 }
